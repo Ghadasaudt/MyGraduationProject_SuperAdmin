@@ -28,6 +28,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        child: Stack(
+          children: [
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: Image.asset(
+                'assets/images/gpHomepage.jpg',
+                width: 423.2,
+                height: 935.7,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(-0.17, -0.8),
+              child: Image.asset(
+                'assets/images/9hsjc_2.png',
+                width: 188,
+                height: 194.2,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

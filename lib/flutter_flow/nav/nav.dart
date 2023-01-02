@@ -86,6 +86,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'homePage',
               path: 'homePage',
               builder: (context, params) => HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'addActivity',
+              path: 'addActivity',
+              requireAuth: true,
+              builder: (context, params) => AddActivityWidget(),
+            ),
+            FFRoute(
+              name: 'addActivityCopy',
+              path: 'addActivityCopy',
+              requireAuth: true,
+              builder: (context, params) => AddActivityCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

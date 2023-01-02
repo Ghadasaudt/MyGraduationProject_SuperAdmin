@@ -13,6 +13,7 @@ import '../main.dart';
 
 import 'lat_lng.dart';
 
+export 'keep_alive_wrapper.dart';
 export 'lat_lng.dart';
 export 'place.dart';
 export '../app_state.dart';
@@ -239,4 +240,8 @@ extension FFStringExt on String {
       maxChars != null && length > maxChars
           ? replaceRange(maxChars, null, replacement)
           : this;
+}
+
+extension ListFilterExt<T> on Iterable<T?> {
+  List<T> get withoutNulls => where((s) => s != null).map((e) => e!).toList();
 }
