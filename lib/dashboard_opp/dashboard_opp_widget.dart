@@ -272,13 +272,21 @@ class _DashboardOppWidgetState extends State<DashboardOppWidget> {
                                                                         MainAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      Icon(
-                                                                        Icons
-                                                                            .arrow_back_ios,
-                                                                        color: Color(
-                                                                            0xFFA6A6A6),
-                                                                        size:
-                                                                            24,
+                                                                      InkWell(
+                                                                        onTap:
+                                                                            () async {
+                                                                          context
+                                                                              .pushNamed('app_management');
+                                                                        },
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .arrow_back_ios,
+                                                                          color:
+                                                                              Color(0xFFA6A6A6),
+                                                                          size:
+                                                                              24,
+                                                                        ),
                                                                       ),
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -338,10 +346,15 @@ class _DashboardOppWidgetState extends State<DashboardOppWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(23, 10, 0, 0),
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Color(0xFFA6A6A6),
-                  size: 24,
+                child: InkWell(
+                  onTap: () async {
+                    context.pushNamed('homePage');
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: Color(0xFFA6A6A6),
+                    size: 24,
+                  ),
                 ),
               ),
             ],
