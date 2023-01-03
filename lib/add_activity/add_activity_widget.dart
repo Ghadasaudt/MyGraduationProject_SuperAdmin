@@ -48,8 +48,8 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
   DateTime? datePicked4;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey2 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -127,7 +127,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                               child: Container(
                                 width: double.infinity,
                                 child: Form(
-                                  key: formKey2,
+                                  key: formKey1,
                                   autovalidateMode: AutovalidateMode.always,
                                   child: Container(
                                     width: double.infinity,
@@ -1172,7 +1172,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                 return Container(
                                   width: double.infinity,
                                   child: Form(
-                                    key: formKey1,
+                                    key: formKey2,
                                     autovalidateMode: AutovalidateMode.always,
                                     child: Container(
                                       width: double.infinity,
