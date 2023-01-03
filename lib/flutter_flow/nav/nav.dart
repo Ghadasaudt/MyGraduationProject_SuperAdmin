@@ -92,6 +92,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'addActivity',
               requireAuth: true,
               builder: (context, params) => AddActivityWidget(),
+            ),
+            FFRoute(
+              name: 'Dashboard_opp',
+              path: 'dashboardOpp',
+              requireAuth: true,
+              builder: (context, params) => DashboardOppWidget(),
+            ),
+            FFRoute(
+              name: 'app_management',
+              path: 'appManagement',
+              requireAuth: true,
+              builder: (context, params) => AppManagementWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
