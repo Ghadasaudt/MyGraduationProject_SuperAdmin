@@ -104,6 +104,63 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'appManagement',
               requireAuth: true,
               builder: (context, params) => AppManagementWidget(),
+            ),
+            FFRoute(
+              name: 'courses',
+              path: 'courses',
+              requireAuth: true,
+              builder: (context, params) => CoursesWidget(),
+            ),
+            FFRoute(
+              name: 'couese_info',
+              path: 'coueseInfo',
+              requireAuth: true,
+              builder: (context, params) => CoueseInfoWidget(
+                courseid: params.getParam('courseid', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'workshops',
+              path: 'workshops',
+              requireAuth: true,
+              builder: (context, params) => WorkshopsWidget(),
+            ),
+            FFRoute(
+              name: 'workshope_info',
+              path: 'workshopeInfo',
+              requireAuth: true,
+              builder: (context, params) => WorkshopeInfoWidget(
+                workshopid: params.getParam('workshopid', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'events',
+              path: 'events',
+              requireAuth: true,
+              builder: (context, params) => EventsWidget(),
+            ),
+            FFRoute(
+              name: 'event_info',
+              path: 'eventInfo',
+              requireAuth: true,
+              builder: (context, params) => EventInfoWidget(
+                eventid: params.getParam('eventid', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'Opportunities',
+              path: 'opportunities',
+              requireAuth: true,
+              builder: (context, params) => OpportunitiesWidget(),
+            ),
+            FFRoute(
+              name: 'Opportunity_apply_form',
+              path: 'opportunityApplyForm',
+              requireAuth: true,
+              builder: (context, params) => OpportunityApplyFormWidget(
+                opportunityID:
+                    params.getParam('opportunityID', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
