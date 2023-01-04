@@ -13,3 +13,4 @@ export 'event_info/event_info_widget.dart' show EventInfoWidget;
 export 'opportunities/opportunities_widget.dart' show OpportunitiesWidget;
 export 'opportunity_apply_form/opportunity_apply_form_widget.dart'
     show OpportunityApplyFormWidget;
+export 'unauthpage/unauthpage_widget.dart' show UnauthpageWidget;
