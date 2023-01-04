@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -235,7 +236,28 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       0, 0, 0, 20),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      context.pushNamed('homePage');
+                                      GoRouter.of(context).prepareAuthEvent();
+
+                                      final user = await signInWithEmail(
+                                        context,
+                                        emailController!.text,
+                                        passwordController!.text,
+                                      );
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      await Future.delayed(
+                                          const Duration(milliseconds: 2000));
+                                      if (valueOrDefault(
+                                              currentUserDocument?.type, '') !=
+                                          'super admin') {
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        await signOut();
+
+                                        context.pushNamedAuth(
+                                            'unauthpage', mounted);
+                                      }
                                     },
                                     text: 'تسجيل الدخول',
                                     options: FFButtonOptions(

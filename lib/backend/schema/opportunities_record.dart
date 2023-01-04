@@ -11,9 +11,6 @@ abstract class OpportunitiesRecord
   static Serializer<OpportunitiesRecord> get serializer =>
       _$opportunitiesRecordSerializer;
 
-  @BuiltValueField(wireName: 'OpID')
-  int? get opID;
-
   @BuiltValueField(wireName: 'OpDesc')
   String? get opDesc;
 
@@ -22,9 +19,6 @@ abstract class OpportunitiesRecord
 
   @BuiltValueField(wireName: 'Edate')
   DateTime? get edate;
-
-  @BuiltValueField(wireName: 'OpSkills')
-  BuiltList<String>? get opSkills;
 
   @BuiltValueField(wireName: 'OpProvider')
   String? get opProvider;
@@ -40,26 +34,28 @@ abstract class OpportunitiesRecord
 
   String? get oppName;
 
-  @BuiltValueField(wireName: 'applied_by')
-  BuiltList<String>? get appliedBy;
-
   String? get status;
+
+  @BuiltValueField(wireName: 'OpSkills')
+  BuiltList<String>? get opSkills;
+
+  @BuiltValueField(wireName: 'OpID')
+  String? get opID;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(OpportunitiesRecordBuilder builder) => builder
-    ..opID = 0
     ..opDesc = ''
-    ..opSkills = ListBuilder()
     ..opProvider = ''
     ..opProviderLogo = ''
     ..category = ListBuilder()
     ..opQ = 0
     ..oppName = ''
-    ..appliedBy = ListBuilder()
-    ..status = '';
+    ..status = ''
+    ..opSkills = ListBuilder()
+    ..opID = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Opportunities');
@@ -84,7 +80,6 @@ abstract class OpportunitiesRecord
 }
 
 Map<String, dynamic> createOpportunitiesRecordData({
-  int? opID,
   String? opDesc,
   DateTime? sdate,
   DateTime? edate,
@@ -93,23 +88,23 @@ Map<String, dynamic> createOpportunitiesRecordData({
   int? opQ,
   String? oppName,
   String? status,
+  String? opID,
 }) {
   final firestoreData = serializers.toFirestore(
     OpportunitiesRecord.serializer,
     OpportunitiesRecord(
       (o) => o
-        ..opID = opID
         ..opDesc = opDesc
         ..sdate = sdate
         ..edate = edate
-        ..opSkills = null
         ..opProvider = opProvider
         ..opProviderLogo = opProviderLogo
         ..category = null
         ..opQ = opQ
         ..oppName = oppName
-        ..appliedBy = null
-        ..status = status,
+        ..status = status
+        ..opSkills = null
+        ..opID = opID,
     ),
   );
 
