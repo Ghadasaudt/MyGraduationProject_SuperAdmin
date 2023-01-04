@@ -248,7 +248,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                       }
 
                                       await Future.delayed(
-                                          const Duration(milliseconds: 2000));
+                                          const Duration(milliseconds: 1100));
                                       if (valueOrDefault(
                                               currentUserDocument?.type, '') !=
                                           'super admin') {
@@ -256,7 +256,21 @@ class _LogInWidgetState extends State<LogInWidget> {
                                         await signOut();
 
                                         context.pushNamedAuth(
-                                            'unauthpage', mounted);
+                                          'unauthpage',
+                                          mounted,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
+                                      } else {
+                                        context.pushNamedAuth(
+                                            'homePage', mounted);
                                       }
                                     },
                                     text: 'تسجيل الدخول',
