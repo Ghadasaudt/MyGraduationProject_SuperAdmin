@@ -1,23 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
 
-class GpProjectSuperAdminFirebaseUser {
-  GpProjectSuperAdminFirebaseUser(this.user);
+class CountMeInSuperAdminFirebaseUser {
+  CountMeInSuperAdminFirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 }
 
-GpProjectSuperAdminFirebaseUser? currentUser;
+CountMeInSuperAdminFirebaseUser? currentUser;
 bool get loggedIn => currentUser?.loggedIn ?? false;
-Stream<GpProjectSuperAdminFirebaseUser>
-    gpProjectSuperAdminFirebaseUserStream() => FirebaseAuth.instance
+Stream<CountMeInSuperAdminFirebaseUser>
+    countMeInSuperAdminFirebaseUserStream() => FirebaseAuth.instance
             .authStateChanges()
             .debounce((user) => user == null && !loggedIn
                 ? TimerStream(true, const Duration(seconds: 1))
                 : Stream.value(user))
-            .map<GpProjectSuperAdminFirebaseUser>(
+            .map<CountMeInSuperAdminFirebaseUser>(
           (user) {
-            currentUser = GpProjectSuperAdminFirebaseUser(user);
+            currentUser = CountMeInSuperAdminFirebaseUser(user);
             return currentUser!;
           },
         );

@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:label="GP PROJECT SUPER ADMIN"
+        android:label="CountMeInSuperAdmin"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -47,7 +47,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="gpprojectsuperadmin" android:host="gpprojectsuperadmin.com" />
+                <data android:scheme="countmeinsuperadmin" android:host="countmeinsuperadmin.com" />
             </intent-filter>
 
         </activity>
