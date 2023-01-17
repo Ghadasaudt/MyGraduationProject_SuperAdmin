@@ -1,6 +1,5 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_autocomplete_options_list.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -10,14 +9,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
-class WorkshopsWidget extends StatefulWidget {
-  const WorkshopsWidget({Key? key}) : super(key: key);
+class ManageRequestsWidget extends StatefulWidget {
+  const ManageRequestsWidget({Key? key}) : super(key: key);
 
   @override
-  _WorkshopsWidgetState createState() => _WorkshopsWidgetState();
+  _ManageRequestsWidgetState createState() => _ManageRequestsWidgetState();
 }
 
-class _WorkshopsWidgetState extends State<WorkshopsWidget> {
+class _ManageRequestsWidgetState extends State<ManageRequestsWidget> {
   PagingController<DocumentSnapshot?, ExtraActsRecord>? _pagingController;
   Query? _pagingQuery;
   List<StreamSubscription?> _streamSubscriptions = [];
@@ -49,38 +48,13 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
       key: scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
-          icon: Icon(
-            Icons.chevron_left,
-            color: Color(0xFF777373),
-            size: 30,
-          ),
-          onPressed: () async {
-            if (Navigator.of(context).canPop()) {
-              context.pop();
-            }
-            context.pushNamed(
-              'homePage',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
-                ),
-              },
-            );
-          },
-        ),
         title: Text(
-          'ورش العمل',
+          'إدارة الطلبات',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
-                color: Color(0xFF777373),
+                color: FlutterFlowTheme.of(context).secondaryText,
                 fontSize: 22,
               ),
         ),
@@ -112,7 +86,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                       ),
                       Expanded(
                         child: Container(
-                          width: 40,
+                          width: 140,
                           height: 35,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
@@ -243,9 +217,8 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                 PagedListView<DocumentSnapshot<Object?>?, ExtraActsRecord>(
                   pagingController: () {
                     final Query<Object?> Function(Query<Object?>) queryBuilder =
-                        (extraActsRecord) => extraActsRecord
-                            .where('Act_type', isEqualTo: 'ورشة عمل')
-                            .where('status', isEqualTo: 'موافق عليها');
+                        (extraActsRecord) =>
+                            extraActsRecord.where('status', isEqualTo: 'معلق');
                     if (_pagingController != null) {
                       final query = queryBuilder(ExtraActsRecord.collection);
                       if (query != _pagingQuery) {
@@ -262,9 +235,8 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                     _pagingQuery = queryBuilder(ExtraActsRecord.collection);
                     _pagingController!.addPageRequestListener((nextPageMarker) {
                       queryExtraActsRecordPage(
-                        queryBuilder: (extraActsRecord) => extraActsRecord
-                            .where('Act_type', isEqualTo: 'ورشة عمل')
-                            .where('status', isEqualTo: 'موافق عليها'),
+                        queryBuilder: (extraActsRecord) =>
+                            extraActsRecord.where('status', isEqualTo: 'معلق'),
                         nextPageMarker: nextPageMarker,
                         pageSize: 25,
                         isStream: true,
@@ -315,11 +287,12 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                       final listViewExtraActsRecord =
                           _pagingController!.itemList![listViewIndex];
                       return Visibility(
-                        visible: functions.showSearchResultWorkshops(
+                        visible: functions.showSearchResultCourse(
                             fieldSearchController!.text,
                             listViewExtraActsRecord.actName!),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
                               padding:
@@ -364,24 +337,19 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                              MainAxisAlignment.start,
                                           children: [
-                                            Expanded(
-                                              child: Text(
-                                                listViewExtraActsRecord
-                                                    .actName!,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .title3
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF1C8EC1),
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
+                                            Text(
+                                              listViewExtraActsRecord.actName!,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .title3
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    color: Color(0xFF1C8EC1),
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -393,7 +361,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                         children: [
                                           Text(
                                             'تبدأ',
-                                            textAlign: TextAlign.end,
+                                            textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
@@ -430,6 +398,8 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                             0, 4, 0, 0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             Expanded(
                                               child: Text(
@@ -484,12 +454,12 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                   context.pop();
                                                 }
                                                 context.pushNamed(
-                                                  'workshope_info',
+                                                  'ManageRequestDetails',
                                                   queryParams: {
-                                                    'workshopid':
+                                                    'actsdetails':
                                                         serializeParam(
                                                       listViewExtraActsRecord
-                                                          .actName,
+                                                          .actID,
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
@@ -519,7 +489,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                               ),
                                             ),
                                             Icon(
-                                              Icons.chevron_right,
+                                              Icons.chevron_right_rounded,
                                               color: Color(0xFF777373),
                                               size: 24,
                                             ),

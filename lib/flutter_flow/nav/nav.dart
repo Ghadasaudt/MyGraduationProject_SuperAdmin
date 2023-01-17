@@ -69,13 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : LogInWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LogInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : LogInWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LogInWidget(),
           routes: [
             FFRoute(
               name: 'LogIn',
@@ -86,25 +86,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'homePage',
               path: 'homePage',
               requireAuth: true,
-              builder: (context, params) => HomePageWidget(),
-            ),
-            FFRoute(
-              name: 'addActivity',
-              path: 'addActivity',
-              requireAuth: true,
-              builder: (context, params) => AddActivityWidget(),
-            ),
-            FFRoute(
-              name: 'Dashboard_opp',
-              path: 'dashboardOpp',
-              requireAuth: true,
-              builder: (context, params) => DashboardOppWidget(),
-            ),
-            FFRoute(
-              name: 'app_management',
-              path: 'appManagement',
-              requireAuth: true,
-              builder: (context, params) => AppManagementWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'homePage')
+                  : HomePageWidget(),
             ),
             FFRoute(
               name: 'courses',
@@ -155,6 +139,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OpportunitiesWidget(),
             ),
             FFRoute(
+              name: 'addActivity',
+              path: 'addActivity',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'addActivity')
+                  : AddActivityWidget(),
+            ),
+            FFRoute(
               name: 'Opportunity_apply_form',
               path: 'opportunityApplyForm',
               requireAuth: true,
@@ -164,9 +156,58 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
+              name: 'ManageRequests',
+              path: 'manageRequests',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'ManageRequests')
+                  : ManageRequestsWidget(),
+            ),
+            FFRoute(
+              name: 'ManageRequestDetails',
+              path: 'manageRequestDetails',
+              requireAuth: true,
+              builder: (context, params) => ManageRequestDetailsWidget(
+                actsdetails: params.getParam('actsdetails', ParamType.String),
+              ),
+            ),
+            FFRoute(
               name: 'unauthpage',
               path: 'unauthpage',
               builder: (context, params) => UnauthpageWidget(),
+            ),
+            FFRoute(
+              name: 'MyActivites',
+              path: 'myActivites',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'MyActivites')
+                  : MyActivitesWidget(),
+            ),
+            FFRoute(
+              name: 'MyActDetails',
+              path: 'myActDetails',
+              requireAuth: true,
+              builder: (context, params) => MyActDetailsWidget(
+                actsdetails: params.getParam('actsdetails', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'MyOppDetails',
+              path: 'myOppDetails',
+              requireAuth: true,
+              builder: (context, params) => MyOppDetailsWidget(
+                opportunityID:
+                    params.getParam('opportunityID', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'profile',
+              path: 'profile',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'profile')
+                  : ProfileWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

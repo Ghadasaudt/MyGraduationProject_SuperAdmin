@@ -1,10 +1,6 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -76,10 +72,13 @@ class _CoueseInfoWidgetState extends State<CoueseInfoWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
                               child: Image.network(
-                                scrollingContainerExtraActsRecord!.actPic!,
+                                valueOrDefault<String>(
+                                  scrollingContainerExtraActsRecord!.actPic,
+                                  'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
+                                ),
                                 width: double.infinity,
                                 height: 300,
-                                fit: BoxFit.contain,
+                                fit: BoxFit.scaleDown,
                               ),
                             ),
                             Align(
@@ -157,24 +156,6 @@ class _CoueseInfoWidgetState extends State<CoueseInfoWidget> {
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context).title2,
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 7),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30,
-                                  borderWidth: 1,
-                                  buttonSize: 40,
-                                  icon: Icon(
-                                    Icons.notifications,
-                                    color: Color(0xFF57636C),
-                                    size: 30,
-                                  ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
                                 ),
                               ),
                             ],
@@ -349,200 +330,6 @@ class _CoueseInfoWidgetState extends State<CoueseInfoWidget> {
                             ],
                           ),
                         ),
-                        if (valueOrDefault(currentUserDocument?.type, '') !=
-                            'admin')
-                          AuthUserStreamWidget(
-                            builder: (context) =>
-                                StreamBuilder<List<UsersRecord>>(
-                              stream: queryUsersRecord(
-                                queryBuilder: (usersRecord) =>
-                                    usersRecord.where('email',
-                                        isEqualTo: currentUserEmail),
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: CircularProgressIndicator(
-                                        color: Color(0xFF0184BD),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<UsersRecord> columnUsersRecordList =
-                                    snapshot.data!;
-                                final columnUsersRecord =
-                                    columnUsersRecordList.isNotEmpty
-                                        ? columnUsersRecordList.first
-                                        : null;
-                                return Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    if (!columnUsersRecord!.usersActs!
-                                        .toList()
-                                        .contains(
-                                            scrollingContainerExtraActsRecord!
-                                                .actName))
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 10, 0, 40),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            if (scrollingContainerExtraActsRecord!
-                                                .seats!) {
-                                              if (scrollingContainerExtraActsRecord!
-                                                      .numSeats ==
-                                                  0) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'عذراً لا تتوفر مقاعد'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('تم'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                final usersUpdateData = {
-                                                  'users_acts':
-                                                      FieldValue.arrayUnion([
-                                                    scrollingContainerExtraActsRecord!
-                                                        .actName
-                                                  ]),
-                                                };
-                                                await columnUsersRecord!
-                                                    .reference
-                                                    .update(usersUpdateData);
-
-                                                final extraActsUpdateData = {
-                                                  'num_seats':
-                                                      FieldValue.increment(
-                                                          -(1)),
-                                                };
-                                                await scrollingContainerExtraActsRecord!
-                                                    .reference
-                                                    .update(
-                                                        extraActsUpdateData);
-                                              }
-                                            } else {
-                                              final usersUpdateData = {
-                                                'users_acts':
-                                                    FieldValue.arrayUnion([
-                                                  scrollingContainerExtraActsRecord!
-                                                      .actName
-                                                ]),
-                                              };
-                                              await columnUsersRecord!.reference
-                                                  .update(usersUpdateData);
-                                            }
-
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'تم إلتحاقك في هذا النشاط بنجاح',
-                                                  style: GoogleFonts.getFont(
-                                                    'Open Sans',
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    Color(0xE15BD85B),
-                                              ),
-                                            );
-                                          },
-                                          text: 'إلتحاق',
-                                          options: FFButtonOptions(
-                                            width: 270,
-                                            height: 50,
-                                            color: Color(0xFF1C8EC1),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .subtitle1
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      color: Colors.white,
-                                                    ),
-                                            elevation: 2,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    if (columnUsersRecord!.usersActs!
-                                        .toList()
-                                        .contains(
-                                            scrollingContainerExtraActsRecord!
-                                                .actName))
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 10, 0, 40),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'تم إلتحاقك بذا النشاط مسبقاً'),
-                                                  content: Text(
-                                                      'يمكنك تفقد صفحة \"أنشطتي\" لإلغاء الإلتحاق'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('تم'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          },
-                                          text: 'تم إلتحاقك بهذا النشاط ',
-                                          options: FFButtonOptions(
-                                            width: 270,
-                                            height: 50,
-                                            color: Color(0xFF575F6C),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .subtitle1
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      color: Color(0xFFF3F4F4),
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                    ),
-                                            elevation: 2,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
                       ],
                     ),
                   ],

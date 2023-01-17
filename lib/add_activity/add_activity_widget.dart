@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/foundation.dart';
@@ -1064,7 +1065,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                                                 .text,
                                                         actPic:
                                                             uploadedFileUrl1,
-                                                        status: 'موافق',
+                                                        status: 'موافق عليها',
                                                         sdate: datePicked2,
                                                         edate: datePicked1,
                                                         actLoc:
@@ -1075,6 +1076,18 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                                         numSeats: int.tryParse(
                                                             textController4!
                                                                 .text),
+                                                        actProvider:
+                                                            currentUserDisplayName,
+                                                        actID: random_data
+                                                            .randomString(
+                                                          20,
+                                                          20,
+                                                          true,
+                                                          true,
+                                                          true,
+                                                        ),
+                                                        actProviderEmail:
+                                                            currentUserEmail,
                                                       ),
                                                       'Act_category':
                                                           FFAppState()
@@ -2348,6 +2361,16 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                                           oppNameController!
                                                               .text,
                                                       status: 'موافق',
+                                                      opID: random_data
+                                                          .randomString(
+                                                        20,
+                                                        20,
+                                                        true,
+                                                        true,
+                                                        true,
+                                                      ),
+                                                      opProviderEmail:
+                                                          currentUserEmail,
                                                     ),
                                                     'OpSkills': [
                                                       oppskill1Controller!.text
@@ -2358,18 +2381,6 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                                       .doc()
                                                       .set(
                                                           opportunitiesCreateData);
-
-                                                  final opportunitiesUpdateData =
-                                                      {
-                                                    'OpSkills':
-                                                        FieldValue.arrayUnion([
-                                                      oppskill2Controller!.text
-                                                    ]),
-                                                  };
-                                                  await addextraaxtFormOpportunitiesRecord!
-                                                      .reference
-                                                      .update(
-                                                          opportunitiesUpdateData);
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
                                                     SnackBar(

@@ -240,7 +240,10 @@ class _OpportunitiesWidgetState extends State<OpportunitiesWidget>
                   ),
                 ),
                 StreamBuilder<List<OpportunitiesRecord>>(
-                  stream: queryOpportunitiesRecord(),
+                  stream: queryOpportunitiesRecord(
+                    queryBuilder: (opportunitiesRecord) => opportunitiesRecord
+                        .where('status', isEqualTo: 'موافق عليها'),
+                  ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -258,6 +261,7 @@ class _OpportunitiesWidgetState extends State<OpportunitiesWidget>
                         snapshot.data!;
                     return ListView.builder(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: listViewOpportunitiesRecordList.length,
@@ -320,6 +324,35 @@ class _OpportunitiesWidgetState extends State<OpportunitiesWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          12),
+                                                              topLeft: Radius
+                                                                  .circular(0),
+                                                              topRight: Radius
+                                                                  .circular(12),
+                                                            ),
+                                                            child:
+                                                                Image.network(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewOpportunitiesRecord
+                                                                    .opProviderLogo,
+                                                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS95ie8G-8S3i_QsaD4Gjs1HQHIxBMPcoVLA&usqp=CAU',
+                                                              ),
+                                                              width: 160,
+                                                              height: 100,
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                            ),
+                                                          ),
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
@@ -384,35 +417,6 @@ class _OpportunitiesWidgetState extends State<OpportunitiesWidget>
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
-                                                          ),
-                                                          ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          12),
-                                                              topLeft: Radius
-                                                                  .circular(0),
-                                                              topRight: Radius
-                                                                  .circular(12),
-                                                            ),
-                                                            child:
-                                                                Image.network(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                listViewOpportunitiesRecord
-                                                                    .opProviderLogo,
-                                                                'logo',
-                                                              ),
-                                                              width: 160,
-                                                              height: 100,
-                                                              fit: BoxFit
-                                                                  .contain,
                                                             ),
                                                           ),
                                                         ],

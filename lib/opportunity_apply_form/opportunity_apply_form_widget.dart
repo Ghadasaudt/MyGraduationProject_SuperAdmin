@@ -1,9 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/oppapplicationform_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -138,8 +136,11 @@ class _OpportunityApplyFormWidgetState
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 0, 0, 15),
                                                 child: Image.network(
-                                                  containerOpportunitiesRecord!
-                                                      .opProviderLogo!,
+                                                  valueOrDefault<String>(
+                                                    containerOpportunitiesRecord!
+                                                        .opProviderLogo,
+                                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS95ie8G-8S3i_QsaD4Gjs1HQHIxBMPcoVLA&usqp=CAU',
+                                                  ),
                                                   width: 130,
                                                   fit: BoxFit.contain,
                                                 ),
@@ -283,183 +284,6 @@ class _OpportunityApplyFormWidgetState
                                                   ),
                                                 ],
                                               ),
-                                              if (valueOrDefault(
-                                                      currentUserDocument?.type,
-                                                      '') !=
-                                                  'admin')
-                                                AuthUserStreamWidget(
-                                                  builder: (context) => Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      if (!columnUsersRecord!
-                                                          .usersOpp!
-                                                          .toList()
-                                                          .contains(
-                                                              containerOpportunitiesRecord!
-                                                                  .oppName))
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      15, 0, 0),
-                                                          child: FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              if (columnUsersRecord!
-                                                                  .usersOpp!
-                                                                  .toList()
-                                                                  .contains(
-                                                                      containerOpportunitiesRecord!
-                                                                          .oppName)) {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          '.لقد تم تقديمك على هذه الفرصة مسبقاً'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                          child:
-                                                                              Text('تم'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                );
-                                                              } else {
-                                                                showModalBottomSheet(
-                                                                  isScrollControlled:
-                                                                      true,
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (context) {
-                                                                    return Padding(
-                                                                      padding: MediaQuery.of(
-                                                                              context)
-                                                                          .viewInsets,
-                                                                      child:
-                                                                          Container(
-                                                                        height:
-                                                                            400,
-                                                                        child:
-                                                                            OppapplicationformWidget(
-                                                                          oppappform:
-                                                                              containerOpportunitiesRecord!.oppName,
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                ).then((value) =>
-                                                                    setState(
-                                                                        () {}));
-                                                              }
-                                                            },
-                                                            text: 'تقديم',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: 270,
-                                                              height: 50,
-                                                              color: Color(
-                                                                  0xFF1C8EC1),
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .subtitle1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
-                                                              elevation: 2,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      if (columnUsersRecord!
-                                                          .usersOpp!
-                                                          .toList()
-                                                          .contains(
-                                                              containerOpportunitiesRecord!
-                                                                  .oppName))
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      40),
-                                                          child: FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '.لقد تم تقديمك على هذه الفرصة مسبقاً'),
-                                                                    content: Text(
-                                                                        'توجه لصفحة  \"فرصي\"  لمتابعة حالة التقديم'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'تم'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
-                                                              );
-                                                            },
-                                                            text:
-                                                                'تم تقديمك على هذه الفرصة',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: 270,
-                                                              height: 50,
-                                                              color: Color(
-                                                                  0xFF575F6C),
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .subtitle1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        color: Color(
-                                                                            0xFFF3F4F4),
-                                                                        fontWeight:
-                                                                            FontWeight.w900,
-                                                                      ),
-                                                              elevation: 2,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                    ],
-                                                  ),
-                                                ),
                                             ],
                                           ),
                                         );
