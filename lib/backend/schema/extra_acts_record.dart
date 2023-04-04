@@ -48,6 +48,15 @@ abstract class ExtraActsRecord
   @BuiltValueField(wireName: 'Act_ID')
   String? get actID;
 
+  @BuiltValueField(wireName: 'Act_provider_email')
+  String? get actProviderEmail;
+
+  @BuiltValueField(wireName: 'LastD2enroll')
+  DateTime? get lastD2enroll;
+
+  @BuiltValueField(wireName: 'LastD2disenroll')
+  DateTime? get lastD2disenroll;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -63,7 +72,8 @@ abstract class ExtraActsRecord
     ..numSeats = 0
     ..actCategory = ListBuilder()
     ..actProvider = ''
-    ..actID = '';
+    ..actID = ''
+    ..actProviderEmail = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('extra_acts');
@@ -99,6 +109,9 @@ Map<String, dynamic> createExtraActsRecordData({
   int? numSeats,
   String? actProvider,
   String? actID,
+  String? actProviderEmail,
+  DateTime? lastD2enroll,
+  DateTime? lastD2disenroll,
 }) {
   final firestoreData = serializers.toFirestore(
     ExtraActsRecord.serializer,
@@ -116,7 +129,10 @@ Map<String, dynamic> createExtraActsRecordData({
         ..numSeats = numSeats
         ..actCategory = null
         ..actProvider = actProvider
-        ..actID = actID,
+        ..actID = actID
+        ..actProviderEmail = actProviderEmail
+        ..lastD2enroll = lastD2enroll
+        ..lastD2disenroll = lastD2disenroll,
     ),
   );
 
