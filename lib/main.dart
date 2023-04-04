@@ -175,6 +175,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.person_outline_rounded,
+              size: 24.0,
+            ),
+            activeIcon: Icon(
               Icons.person_rounded,
               size: 24.0,
             ),

@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -52,27 +51,6 @@ class _ManageRequestsWidgetState extends State<ManageRequestsWidget> {
       appBar: AppBar(
         backgroundColor: Color(0xFFF4F3F0),
         automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30.0,
-          buttonSize: 60.0,
-          icon: Icon(
-            Icons.chevron_left_rounded,
-            color: Color(0xFF7EAEBD),
-            size: 30.0,
-          ),
-          onPressed: () async {
-            context.goNamed(
-              'HomePage',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
-                ),
-              },
-            );
-          },
-        ),
         title: Text(
           'طلبات الإضافة',
           style: FlutterFlowTheme.of(context).headlineMedium.override(
