@@ -98,7 +98,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                 size: 30.0,
               ),
               onPressed: () async {
-                context.pop();
+                context.goNamed('HomePage');
               },
             ),
             title: Text(

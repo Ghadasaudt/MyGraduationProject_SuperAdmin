@@ -61,7 +61,7 @@ class _UnauthpageWidgetState extends State<UnauthpageWidget> {
                     width: double.infinity,
                     height: 100.0,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color(0xFFF4F3F0),
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Padding(
@@ -88,11 +88,12 @@ class _UnauthpageWidgetState extends State<UnauthpageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 100.0, 0.0, 0.0),
                                   child: Text(
-                                    'عذراً غير مصلح لك باستخدام هذا النظام',
+                                    'عذراً غير مصرح لك باستخدام هذا النظام',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
+                                          color: Color(0xFF0184BD),
                                           fontSize: 20.0,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -114,11 +115,12 @@ class _UnauthpageWidgetState extends State<UnauthpageWidget> {
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFFFF5757),
+                                      color: Color(0xFF7EAEBD),
                                       textStyle: GoogleFonts.getFont(
                                         'Open Sans',
                                         color: Color(0xFFFFFAF1),
-                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18.0,
                                       ),
                                       elevation: 2.0,
                                       borderSide: BorderSide(

@@ -97,50 +97,60 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Container(
-                                        width: 150.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFE1D7C6),
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 30.0, 5.0, 30.0),
-                                          child: Text(
-                                            'الدورات',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.getFont(
-                                              'Open Sans',
-                                              color: Color(0xFF777373),
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 20.0,
+                                      InkWell(
+                                        onTap: () async {
+                                          context.goNamed('courses');
+                                        },
+                                        child: Container(
+                                          width: 150.0,
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFFE1D7C6),
+                                            borderRadius:
+                                                BorderRadius.circular(16.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 30.0, 5.0, 30.0),
+                                            child: Text(
+                                              'الدورات',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.getFont(
+                                                'Open Sans',
+                                                color: Color(0xFF777373),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 20.0,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        width: 150.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xDFE1D7C6),
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 30.0, 5.0, 30.0),
-                                          child: Text(
-                                            'ورش العمل',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.getFont(
-                                              'Open Sans',
-                                              color: Color(0xFF777373),
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 20.0,
+                                      InkWell(
+                                        onTap: () async {
+                                          context.goNamed('workshops');
+                                        },
+                                        child: Container(
+                                          width: 150.0,
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xDFE1D7C6),
+                                            borderRadius:
+                                                BorderRadius.circular(16.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 30.0, 5.0, 30.0),
+                                            child: Text(
+                                              'ورش العمل',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.getFont(
+                                                'Open Sans',
+                                                color: Color(0xFF777373),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 20.0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -156,50 +166,60 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Container(
-                                        width: 150.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xDFE1D7C6),
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 30.0, 5.0, 30.0),
-                                          child: Text(
-                                            'الفعاليات',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.getFont(
-                                              'Open Sans',
-                                              color: Color(0xFF777373),
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 20.0,
+                                      InkWell(
+                                        onTap: () async {
+                                          context.goNamed('events');
+                                        },
+                                        child: Container(
+                                          width: 150.0,
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xDFE1D7C6),
+                                            borderRadius:
+                                                BorderRadius.circular(16.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 30.0, 5.0, 30.0),
+                                            child: Text(
+                                              'الفعاليات',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.getFont(
+                                                'Open Sans',
+                                                color: Color(0xFF777373),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 20.0,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        width: 150.0,
-                                        height: 100.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xDFE1D7C6),
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 30.0, 5.0, 30.0),
-                                          child: Text(
-                                            'فرص',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.getFont(
-                                              'Open Sans',
-                                              color: Color(0xFF777373),
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 20.0,
+                                      InkWell(
+                                        onTap: () async {
+                                          context.goNamed('Opportunities');
+                                        },
+                                        child: Container(
+                                          width: 150.0,
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xDFE1D7C6),
+                                            borderRadius:
+                                                BorderRadius.circular(16.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 30.0, 5.0, 30.0),
+                                            child: Text(
+                                              'فرص',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.getFont(
+                                                'Open Sans',
+                                                color: Color(0xFF777373),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 20.0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -229,27 +249,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           borderRadius:
                                               BorderRadius.circular(16.0),
                                         ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.add_rounded,
-                                              color: Color(0xFF777373),
-                                              size: 20.0,
-                                            ),
-                                            Text(
-                                              'إضافة فرصة',
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.getFont(
-                                                'Open Sans',
+                                        child: InkWell(
+                                          onTap: () async {
+                                            context.goNamed('addActivity');
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.add_rounded,
                                                 color: Color(0xFF777373),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 20.0,
+                                                size: 20.0,
                                               ),
-                                            ),
-                                          ],
+                                              Text(
+                                                'إضافة فرصة',
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.getFont(
+                                                  'Open Sans',
+                                                  color: Color(0xFF777373),
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -276,27 +301,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           borderRadius:
                                               BorderRadius.circular(16.0),
                                         ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.add_rounded,
-                                              color: Color(0xFF777373),
-                                              size: 20.0,
-                                            ),
-                                            Text(
-                                              'إضافة نشاط',
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.getFont(
-                                                'Open Sans',
+                                        child: InkWell(
+                                          onTap: () async {
+                                            context.goNamed('addopp');
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.add_rounded,
                                                 color: Color(0xFF777373),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 20.0,
+                                                size: 20.0,
                                               ),
-                                            ),
-                                          ],
+                                              Text(
+                                                'إضافة نشاط',
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.getFont(
+                                                  'Open Sans',
+                                                  color: Color(0xFF777373),
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 20.0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),

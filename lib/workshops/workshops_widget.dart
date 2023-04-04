@@ -63,10 +63,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
             size: 30.0,
           ),
           onPressed: () async {
-            if (Navigator.of(context).canPop()) {
-              context.pop();
-            }
-            context.pushNamed(
+            context.goNamed(
               'HomePage',
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(

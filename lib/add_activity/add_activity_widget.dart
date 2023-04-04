@@ -99,7 +99,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                 size: 30.0,
               ),
               onPressed: () async {
-                context.pop();
+                context.goNamed('HomePage');
               },
             ),
             title: Text(
