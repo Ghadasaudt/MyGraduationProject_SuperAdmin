@@ -110,6 +110,13 @@ class _$OpportunitiesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.lastD2apply;
+    if (value != null) {
+      result
+        ..add('LastD2apply')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(DateTime)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -185,6 +192,10 @@ class _$OpportunitiesRecordSerializer
           result.opProviderEmail = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'LastD2apply':
+          result.lastD2apply = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -224,6 +235,8 @@ class _$OpportunitiesRecord extends OpportunitiesRecord {
   @override
   final String? opProviderEmail;
   @override
+  final DateTime? lastD2apply;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$OpportunitiesRecord(
@@ -243,6 +256,7 @@ class _$OpportunitiesRecord extends OpportunitiesRecord {
       this.opSkills,
       this.opID,
       this.opProviderEmail,
+      this.lastD2apply,
       this.ffRef})
       : super._();
 
@@ -271,35 +285,29 @@ class _$OpportunitiesRecord extends OpportunitiesRecord {
         opSkills == other.opSkills &&
         opID == other.opID &&
         opProviderEmail == other.opProviderEmail &&
+        lastD2apply == other.lastD2apply &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc($jc(0, opDesc.hashCode),
-                                                    sdate.hashCode),
-                                                edate.hashCode),
-                                            opProvider.hashCode),
-                                        opProviderLogo.hashCode),
-                                    category.hashCode),
-                                opQ.hashCode),
-                            oppName.hashCode),
-                        status.hashCode),
-                    opSkills.hashCode),
-                opID.hashCode),
-            opProviderEmail.hashCode),
-        ffRef.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, opDesc.hashCode);
+    _$hash = $jc(_$hash, sdate.hashCode);
+    _$hash = $jc(_$hash, edate.hashCode);
+    _$hash = $jc(_$hash, opProvider.hashCode);
+    _$hash = $jc(_$hash, opProviderLogo.hashCode);
+    _$hash = $jc(_$hash, category.hashCode);
+    _$hash = $jc(_$hash, opQ.hashCode);
+    _$hash = $jc(_$hash, oppName.hashCode);
+    _$hash = $jc(_$hash, status.hashCode);
+    _$hash = $jc(_$hash, opSkills.hashCode);
+    _$hash = $jc(_$hash, opID.hashCode);
+    _$hash = $jc(_$hash, opProviderEmail.hashCode);
+    _$hash = $jc(_$hash, lastD2apply.hashCode);
+    _$hash = $jc(_$hash, ffRef.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -317,6 +325,7 @@ class _$OpportunitiesRecord extends OpportunitiesRecord {
           ..add('opSkills', opSkills)
           ..add('opID', opID)
           ..add('opProviderEmail', opProviderEmail)
+          ..add('lastD2apply', lastD2apply)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -378,6 +387,10 @@ class OpportunitiesRecordBuilder
   set opProviderEmail(String? opProviderEmail) =>
       _$this._opProviderEmail = opProviderEmail;
 
+  DateTime? _lastD2apply;
+  DateTime? get lastD2apply => _$this._lastD2apply;
+  set lastD2apply(DateTime? lastD2apply) => _$this._lastD2apply = lastD2apply;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -401,6 +414,7 @@ class OpportunitiesRecordBuilder
       _opSkills = $v.opSkills?.toBuilder();
       _opID = $v.opID;
       _opProviderEmail = $v.opProviderEmail;
+      _lastD2apply = $v.lastD2apply;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -438,6 +452,7 @@ class OpportunitiesRecordBuilder
               opSkills: _opSkills?.build(),
               opID: opID,
               opProviderEmail: opProviderEmail,
+              lastD2apply: lastD2apply,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -458,4 +473,4 @@ class OpportunitiesRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

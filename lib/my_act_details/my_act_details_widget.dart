@@ -1,11 +1,13 @@
-import '../backend/backend.dart';
-import '../components/edit_act_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/backend/backend.dart';
+import '/components/edit_act_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'my_act_details_model.dart';
+export 'my_act_details_model.dart';
 
 class MyActDetailsWidget extends StatefulWidget {
   const MyActDetailsWidget({
@@ -20,11 +22,21 @@ class MyActDetailsWidget extends StatefulWidget {
 }
 
 class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
-  final _unfocusNode = FocusNode();
+  late MyActDetailsModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MyActDetailsModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -50,8 +62,8 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
               if (!snapshot.hasData) {
                 return Center(
                   child: SizedBox(
-                    width: 50,
-                    height: 50,
+                    width: 50.0,
+                    height: 50.0,
                     child: CircularProgressIndicator(
                       color: Color(0xFF0184BD),
                     ),
@@ -82,40 +94,41 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 50),
+                                      0.0, 0.0, 0.0, 50.0),
                                   child: Image.network(
                                     valueOrDefault<String>(
                                       scrollingContainerExtraActsRecord!.actPic,
                                       'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
                                     ),
                                     width: double.infinity,
-                                    height: 300,
+                                    height: 300.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, -0.99),
+                                  alignment: AlignmentDirectional(0.0, -0.99),
                                   child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 90,
+                                    width:
+                                        MediaQuery.of(context).size.width * 1.0,
+                                    height: 90.0,
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xB3090F13),
                                           Color(0x00090F13)
                                         ],
-                                        stops: [0, 1],
-                                        begin: AlignmentDirectional(0, -1),
-                                        end: AlignmentDirectional(0, 1),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
                                     ),
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(-1, 0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 40, 16, 16),
+                                        16.0, 40.0, 16.0, 16.0),
                                     child: InkWell(
                                       onTap: () async {
                                         if (Navigator.of(context).canPop()) {
@@ -126,19 +139,19 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                       child: Card(
                                         clipBehavior:
                                             Clip.antiAliasWithSaveLayer,
-                                        elevation: 3,
+                                        elevation: 3.0,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(30),
+                                              BorderRadius.circular(30.0),
                                         ),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  4, 4, 4, 4),
+                                                  4.0, 4.0, 4.0, 4.0),
                                           child: Icon(
                                             Icons.arrow_back_rounded,
                                             color: Color(0xFFFF5757),
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -147,21 +160,22 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      290, 40, 0, 0),
+                                      290.0, 40.0, 0.0, 0.0),
                                   child: FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
-                                    borderRadius: 10,
-                                    borderWidth: 1,
-                                    buttonSize: 40,
+                                    borderRadius: 10.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 40.0,
                                     icon: Icon(
                                       Icons.edit_outlined,
                                       color: Color(0xFFFF5757),
-                                      size: 25,
+                                      size: 25.0,
                                     ),
                                     onPressed: () async {
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
+                                        barrierColor: Color(0x00000000),
                                         enableDrag: false,
                                         context: context,
                                         builder: (context) {
@@ -183,16 +197,16 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                   alignment: AlignmentDirectional(-0.87, -0.79),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        330, 40, 0, 0),
+                                        330.0, 40.0, 0.0, 0.0),
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
-                                      borderRadius: 10,
-                                      borderWidth: 1,
-                                      buttonSize: 40,
+                                      borderRadius: 10.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
                                       icon: Icon(
                                         Icons.delete_forever_rounded,
                                         color: Color(0xFFFF5757),
-                                        size: 25,
+                                        size: 25.0,
                                       ),
                                       onPressed: () async {
                                         var confirmDialogResponse =
@@ -256,33 +270,47 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                               ],
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 0, 12, 4),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 12.0, 4.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.end,
-                                children: [],
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 6.0, 0.0),
+                                      child: Text(
+                                        scrollingContainerExtraActsRecord!
+                                            .actName!,
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 4, 12, 8),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 4.0, 12.0, 8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 4),
+                                        0.0, 0.0, 0.0, 4.0),
                                     child: Icon(
                                       Icons.schedule,
                                       color: Color(0xFF0184BD),
-                                      size: 20,
+                                      size: 20.0,
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 4, 0),
+                                        0.0, 0.0, 4.0, 0.0),
                                     child: Text(
                                       dateTimeFormat(
                                         'M/d h:mm a',
@@ -292,7 +320,7 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                             .languageCode,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: Color(0xFF0184BD),
@@ -302,24 +330,11 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 4),
+                                        0.0, 0.0, 0.0, 4.0),
                                     child: Icon(
                                       Icons.schedule,
                                       color: Color(0xFF0184BD),
-                                      size: 20,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 6, 0),
-                                      child: Text(
-                                        scrollingContainerExtraActsRecord!
-                                            .actName!,
-                                        textAlign: TextAlign.start,
-                                        style:
-                                            FlutterFlowTheme.of(context).title2,
-                                      ),
+                                      size: 20.0,
                                     ),
                                   ),
                                   Text(
@@ -330,7 +345,7 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                           .languageCode,
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: Color(0xFF0184BD),
@@ -341,19 +356,19 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 4, 12, 8),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 4.0, 12.0, 8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 4),
+                                        0.0, 0.0, 0.0, 4.0),
                                     child: Icon(
                                       Icons.location_on_sharp,
                                       color: Color(0xFF0184BD),
-                                      size: 20,
+                                      size: 20.0,
                                     ),
                                   ),
                                   Expanded(
@@ -362,7 +377,7 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                           .actLoc!,
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: Color(0xFF0184BD),
@@ -374,8 +389,8 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 4, 12, 8),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 4.0, 12.0, 8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -385,11 +400,11 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                       true)
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 4),
+                                          0.0, 0.0, 0.0, 4.0),
                                       child: Icon(
                                         Icons.event_seat_rounded,
                                         color: Color(0xFF0184BD),
-                                        size: 20,
+                                        size: 20.0,
                                       ),
                                     ),
                                   if (scrollingContainerExtraActsRecord!
@@ -400,7 +415,7 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                           .numSeats!
                                           .toString(),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Poppins',
                                             color: Color(0xFF0184BD),
@@ -411,20 +426,20 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 4, 12, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 4.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 4),
+                                        0.0, 4.0, 0.0, 4.0),
                                     child: Text(
                                       'تفاصيل الدورة',
                                       textAlign: TextAlign.end,
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText2
+                                          .bodySmall
                                           .override(
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.bold,
@@ -435,8 +450,8 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(12, 0, 12, 4),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 12.0, 4.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -444,13 +459,13 @@ class _MyActDetailsWidgetState extends State<MyActDetailsWidget> {
                                   Expanded(
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 4, 0, 4),
+                                          0.0, 4.0, 0.0, 4.0),
                                       child: Text(
                                         scrollingContainerExtraActsRecord!
                                             .actDec!,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                            .bodyMedium,
                                       ),
                                     ),
                                   ),

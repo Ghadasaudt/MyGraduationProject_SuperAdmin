@@ -1,11 +1,12 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
-
+import 'backend/push_notifications/push_notifications_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -45,6 +46,7 @@ class _MyAppState extends State<MyApp> {
   late GoRouter _router;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
+  final fcmTokenSub = fcmTokenUserStream.listen((_) {});
 
   @override
   void initState() {
@@ -63,7 +65,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     authUserSub.cancel();
-
+    fcmTokenSub.cancel();
     super.dispose();
   }
 
@@ -109,7 +111,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'homePage';
+  String _currentPageName = 'HomePage';
   late Widget? _currentPage;
 
   @override
@@ -122,8 +124,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'homePage': HomePageWidget(),
-      'addActivity': AddActivityWidget(),
+      'HomePage': HomePageWidget(),
       'ManageRequests': ManageRequestsWidget(),
       'MyActivites': MyActivitesWidget(),
       'profile': ProfileWidget(),
@@ -138,40 +139,36 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPageName = tabs.keys.toList()[i];
         }),
         backgroundColor: Colors.white,
-        selectedItemColor: Color(0xFF1C8EC1),
-        unselectedItemColor: Color(0x8A000000),
+        selectedItemColor: Color(0xFF7EAEBD),
+        unselectedItemColor: Color(0xFF777373),
         showSelectedLabels: true,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_rounded,
-              size: 24,
+              Icons.home_outlined,
+              size: 24.0,
+            ),
+            activeIcon: Icon(
+              Icons.home_sharp,
+              size: 28.0,
             ),
             label: 'الرئيسية',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.add_rounded,
-              size: 24,
-            ),
-            label: 'إضافة',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.flaky_rounded,
-              size: 24,
+              size: 24.0,
             ),
-            label: 'إدارة الطلبات',
+            label: 'طلبات الإضافة',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.dashboard_rounded,
-              size: 24,
+              size: 24.0,
             ),
             label: 'أنشطتي',
             tooltip: '',
@@ -179,7 +176,7 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person_rounded,
-              size: 24,
+              size: 24.0,
             ),
             label: 'حسابي',
             tooltip: '',

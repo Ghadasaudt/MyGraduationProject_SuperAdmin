@@ -1,13 +1,15 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'profile_model.dart';
+export 'profile_model.dart';
 
 class ProfileWidget extends StatefulWidget {
   const ProfileWidget({Key? key}) : super(key: key);
@@ -17,18 +19,23 @@ class ProfileWidget extends StatefulWidget {
 }
 
 class _ProfileWidgetState extends State<ProfileWidget> {
-  TextEditingController? nameController;
+  late ProfileModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    nameController = TextEditingController(text: currentUserDisplayName);
+    _model = createModel(context, () => ProfileModel());
+
+    _model.nameController ??=
+        TextEditingController(text: currentUserDisplayName);
   }
 
   @override
   void dispose() {
-    nameController?.dispose();
+    _model.dispose();
+
     super.dispose();
   }
 
@@ -44,22 +51,22 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           'حسابي',
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
                 color: Color(0xFF57636C),
-                fontSize: 22,
+                fontSize: 22.0,
               ),
         ),
         actions: [
           FlutterFlowIconButton(
             borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.logout,
               color: Color(0xFFFF5757),
-              size: 22,
+              size: 22.0,
             ),
             onPressed: () async {
               var confirmDialogResponse = await showDialog<bool>(
@@ -86,6 +93,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               if (confirmDialogResponse) {
                 GoRouter.of(context).prepareAuthEvent();
                 await signOut();
+                GoRouter.of(context).clearRedirectLocation();
 
                 context.pushNamedAuth(
                   'LogIn',
@@ -117,7 +125,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           ),
         ],
         centerTitle: true,
-        elevation: 2,
+        elevation: 2.0,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -125,27 +133,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 739,
+              height: 739.0,
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    blurRadius: 5,
+                    blurRadius: 5.0,
                     color: Color(0x430F1113),
-                    offset: Offset(0, 2),
+                    offset: Offset(0.0, 2.0),
                   )
                 ],
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(8),
-                  bottomRight: Radius.circular(8),
-                  topLeft: Radius.circular(0),
-                  topRight: Radius.circular(0),
+                  bottomLeft: Radius.circular(8.0),
+                  bottomRight: Radius.circular(8.0),
+                  topLeft: Radius.circular(0.0),
+                  topRight: Radius.circular(0.0),
                 ),
               ),
               child: Align(
-                alignment: AlignmentDirectional(0, -0.85),
+                alignment: AlignmentDirectional(0.0, -0.85),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 90),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 90.0),
                   child: SingleChildScrollView(
                     primary: false,
                     child: Column(
@@ -153,7 +161,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -163,10 +172,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 '  مرحباً',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Poppins',
-                                      fontSize: 24,
+                                      fontSize: 24.0,
                                     ),
                               )),
                               Expanded(
@@ -176,10 +185,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     currentUserDisplayName,
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
-                                          fontSize: 24,
+                                          fontSize: 24.0,
                                         ),
                                   )),
                                 ),
@@ -188,14 +197,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 0.0, 30.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 15, 0, 15),
+                                    0.0, 15.0, 0.0, 15.0),
                                 child: SelectionArea(
                                     child: Text(
                                   'يمكنك تعديل المعلومات التالية:',
@@ -211,7 +221,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 2),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 0.0, 30.0, 2.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -219,7 +230,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 20, 0),
+                                      20.0, 0.0, 20.0, 0.0),
                                   child: SelectionArea(
                                       child: Text(
                                     'الاسم:',
@@ -236,13 +247,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(20, 0, 20, 15),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 15.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => Container(
-                              width: 300,
+                              width: 300.0,
                               child: TextFormField(
-                                controller: nameController,
+                                controller: _model.nameController,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: 'الاسم',
@@ -253,30 +264,30 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25),
+                                    borderRadius: BorderRadius.circular(25.0),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25),
+                                    borderRadius: BorderRadius.circular(25.0),
                                   ),
                                   errorBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25),
+                                    borderRadius: BorderRadius.circular(25.0),
                                   ),
                                   focusedErrorBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25),
+                                    borderRadius: BorderRadius.circular(25.0),
                                   ),
                                   filled: true,
                                   fillColor: Color(0xFFE0E0E0),
@@ -286,17 +297,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   color: Color(0xFF565656),
                                 ),
                                 textAlign: TextAlign.start,
+                                validator: _model.nameControllerValidator
+                                    .asValidator(context),
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 320, 0, 12),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 320.0, 0.0, 12.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               final usersUpdateData = createUsersRecordData(
-                                displayName: nameController!.text,
+                                displayName: _model.nameController.text,
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
@@ -317,21 +330,25 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             },
                             text: 'حفظ التغيرات',
                             options: FFButtonOptions(
-                              width: 230,
-                              height: 50,
+                              width: 230.0,
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
                               color: Color(0xFF1C8EC1),
                               textStyle: FlutterFlowTheme.of(context)
-                                  .bodyText2
+                                  .bodySmall
                                   .override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
-                                    fontSize: 14,
+                                    fontSize: 14.0,
                                     fontWeight: FontWeight.normal,
                                   ),
-                              elevation: 3,
+                              elevation: 3.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
-                                width: 1,
+                                width: 1.0,
                               ),
                             ),
                           ),

@@ -10,6 +10,7 @@ import 'schema/extra_acts_record.dart';
 import 'schema/opportunities_record.dart';
 import 'schema/category_record.dart';
 import 'schema/opp_applications_record.dart';
+import 'schema/notify_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -22,6 +23,7 @@ export 'schema/extra_acts_record.dart';
 export 'schema/opportunities_record.dart';
 export 'schema/category_record.dart';
 export 'schema/opp_applications_record.dart';
+export 'schema/notify_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -277,6 +279,58 @@ Future<FFFirestorePage<OppApplicationsRecord>> queryOppApplicationsRecordPage({
     queryCollectionPage(
       OppApplicationsRecord.collection,
       OppApplicationsRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query NotifyRecords (as a Stream and as a Future).
+Future<int> queryNotifyRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      NotifyRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<NotifyRecord>> queryNotifyRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      NotifyRecord.collection,
+      NotifyRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<NotifyRecord>> queryNotifyRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      NotifyRecord.collection,
+      NotifyRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<NotifyRecord>> queryNotifyRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      NotifyRecord.collection,
+      NotifyRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

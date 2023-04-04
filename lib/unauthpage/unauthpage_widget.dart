@@ -1,9 +1,11 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'unauthpage_model.dart';
+export 'unauthpage_model.dart';
 
 class UnauthpageWidget extends StatefulWidget {
   const UnauthpageWidget({Key? key}) : super(key: key);
@@ -13,7 +15,22 @@ class UnauthpageWidget extends StatefulWidget {
 }
 
 class _UnauthpageWidgetState extends State<UnauthpageWidget> {
+  late UnauthpageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => UnauthpageModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +42,11 @@ class _UnauthpageWidgetState extends State<UnauthpageWidget> {
       body: Stack(
         children: [
           Align(
-            alignment: AlignmentDirectional(0, -1),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Image.asset(
-              'assets/images/mcatd_1.png',
+              'assets/images/40vyp_1.JPG',
               width: double.infinity,
-              height: 250,
+              height: 250.0,
               fit: BoxFit.cover,
             ),
           ),
@@ -39,16 +56,17 @@ class _UnauthpageWidgetState extends State<UnauthpageWidget> {
               Expanded(
                 flex: 3,
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 140, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 140.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
-                    height: 100,
+                    height: 100.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -59,49 +77,55 @@ class _UnauthpageWidgetState extends State<UnauthpageWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 20),
+                                      0.0, 0.0, 0.0, 20.0),
                                   child: Image.asset(
-                                    'assets/images/9hsjc_2.png',
-                                    width: 190,
+                                    'assets/images/2logo.JPG',
+                                    width: 190.0,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 100, 0, 0),
+                                      0.0, 100.0, 0.0, 0.0),
                                   child: Text(
                                     'عذراً غير مصلح لك باستخدام هذا النظام',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Poppins',
-                                          fontSize: 20,
+                                          fontSize: 20.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 20),
+                                      0.0, 20.0, 0.0, 20.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       context.pushNamed('LogIn');
                                     },
                                     text: 'العودة للصفحة السابقة',
                                     options: FFButtonOptions(
-                                      width: 300,
-                                      height: 50,
+                                      width: 300.0,
+                                      height: 50.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
                                       color: Color(0xFFFF5757),
                                       textStyle: GoogleFonts.getFont(
                                         'Open Sans',
                                         color: Color(0xFFFFFAF1),
-                                        fontSize: 16,
+                                        fontSize: 16.0,
                                       ),
+                                      elevation: 2.0,
                                       borderSide: BorderSide(
                                         color: Colors.transparent,
-                                        width: 0,
+                                        width: 0.0,
                                       ),
-                                      borderRadius: BorderRadius.circular(25),
+                                      borderRadius: BorderRadius.circular(25.0),
                                     ),
                                   ),
                                 ),

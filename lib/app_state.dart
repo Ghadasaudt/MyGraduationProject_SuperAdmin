@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'flutter_flow/lat_lng.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static final FFAppState _instance = FFAppState._internal();
@@ -30,12 +31,6 @@ class FFAppState extends ChangeNotifier {
     _userSigned = _value;
   }
 
-  int _numskills = 1;
-  int get numskills => _numskills;
-  set numskills(int _value) {
-    _numskills = _value;
-  }
-
   List<String> _ActCategory = [];
   List<String> get ActCategory => _ActCategory;
   set ActCategory(List<String> _value) {
@@ -48,6 +43,64 @@ class FFAppState extends ChangeNotifier {
 
   void removeFromActCategory(String _value) {
     _ActCategory.remove(_value);
+  }
+
+  void removeAtIndexFromActCategory(int _index) {
+    _ActCategory.removeAt(_index);
+  }
+
+  List<DocumentReference> _userswantnotif = [];
+  List<DocumentReference> get userswantnotif => _userswantnotif;
+  set userswantnotif(List<DocumentReference> _value) {
+    _userswantnotif = _value;
+  }
+
+  void addToUserswantnotif(DocumentReference _value) {
+    _userswantnotif.add(_value);
+  }
+
+  void removeFromUserswantnotif(DocumentReference _value) {
+    _userswantnotif.remove(_value);
+  }
+
+  void removeAtIndexFromUserswantnotif(int _index) {
+    _userswantnotif.removeAt(_index);
+  }
+
+  List<String> _skilllist = [];
+  List<String> get skilllist => _skilllist;
+  set skilllist(List<String> _value) {
+    _skilllist = _value;
+  }
+
+  void addToSkilllist(String _value) {
+    _skilllist.add(_value);
+  }
+
+  void removeFromSkilllist(String _value) {
+    _skilllist.remove(_value);
+  }
+
+  void removeAtIndexFromSkilllist(int _index) {
+    _skilllist.removeAt(_index);
+  }
+
+  List<String> _numskills = [];
+  List<String> get numskills => _numskills;
+  set numskills(List<String> _value) {
+    _numskills = _value;
+  }
+
+  void addToNumskills(String _value) {
+    _numskills.add(_value);
+  }
+
+  void removeFromNumskills(String _value) {
+    _numskills.remove(_value);
+  }
+
+  void removeAtIndexFromNumskills(int _index) {
+    _numskills.removeAt(_index);
   }
 }
 

@@ -7,6 +7,8 @@ import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
 
 import '../../auth/firebase_user_provider.dart';
+import '../../backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 
 import '../../index.dart';
 import '../../main.dart';
@@ -83,11 +85,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LogInWidget(),
             ),
             FFRoute(
-              name: 'homePage',
+              name: 'HomePage',
               path: 'homePage',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'homePage')
+                  ? NavBarPage(initialPage: 'HomePage')
                   : HomePageWidget(),
             ),
             FFRoute(
@@ -97,10 +99,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => CoursesWidget(),
             ),
             FFRoute(
-              name: 'couese_info',
-              path: 'coueseInfo',
+              name: 'course_info',
+              path: 'courseInfo',
               requireAuth: true,
-              builder: (context, params) => CoueseInfoWidget(
+              builder: (context, params) => CourseInfoWidget(
                 courseid: params.getParam('courseid', ParamType.String),
               ),
             ),
@@ -115,7 +117,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'workshopeInfo',
               requireAuth: true,
               builder: (context, params) => WorkshopeInfoWidget(
-                workshopid: params.getParam('workshopid', ParamType.String),
+                workshopID: params.getParam('workshopID', ParamType.String),
               ),
             ),
             FFRoute(
@@ -129,7 +131,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'eventInfo',
               requireAuth: true,
               builder: (context, params) => EventInfoWidget(
-                eventid: params.getParam('eventid', ParamType.String),
+                eventID: params.getParam('eventID', ParamType.String),
               ),
             ),
             FFRoute(
@@ -139,14 +141,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OpportunitiesWidget(),
             ),
             FFRoute(
-              name: 'addActivity',
-              path: 'addActivity',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'addActivity')
-                  : AddActivityWidget(),
-            ),
-            FFRoute(
               name: 'Opportunity_apply_form',
               path: 'opportunityApplyForm',
               requireAuth: true,
@@ -154,6 +148,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 opportunityID:
                     params.getParam('opportunityID', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'addActivity',
+              path: 'addActivity',
+              requireAuth: true,
+              builder: (context, params) => AddActivityWidget(),
+            ),
+            FFRoute(
+              name: 'addopp',
+              path: 'addopp',
+              requireAuth: true,
+              builder: (context, params) => AddoppWidget(),
             ),
             FFRoute(
               name: 'ManageRequests',
@@ -210,8 +216,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : ProfileWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
-        ).toRoute(appStateNotifier),
-      ],
+        ),
+      ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
     );
 
@@ -257,6 +263,16 @@ extension NavigationExtensions on BuildContext {
               queryParams: queryParams,
               extra: extra,
             );
+
+  void safePop() {
+    // If there is only one route on the stack, navigate to the initial
+    // page instead of popping.
+    if (GoRouter.of(this).routerDelegate.matches.length <= 1) {
+      go('/');
+    } else {
+      pop();
+    }
+  }
 }
 
 extension GoRouterExtensions on GoRouter {
@@ -268,6 +284,7 @@ extension GoRouterExtensions on GoRouter {
           : appState.updateNotifyOnAuthChange(false);
   bool shouldRedirect(bool ignoreRedirect) =>
       !ignoreRedirect && appState.hasRedirect();
+  void clearRedirectLocation() => appState.clearRedirectLocation();
   void setRedirectLocationIfUnset(String location) =>
       (routerDelegate.refreshListenable as AppStateNotifier)
           .updateNotifyOnAuthChange(false);
@@ -380,16 +397,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(
-                      color: Color(0xFF0184BD),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/mmfwi_2.png',
+                    fit: BoxFit.contain,
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

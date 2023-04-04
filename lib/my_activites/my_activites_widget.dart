@@ -1,10 +1,12 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'my_activites_model.dart';
+export 'my_activites_model.dart';
 
 class MyActivitesWidget extends StatefulWidget {
   const MyActivitesWidget({Key? key}) : super(key: key);
@@ -14,11 +16,21 @@ class MyActivitesWidget extends StatefulWidget {
 }
 
 class _MyActivitesWidgetState extends State<MyActivitesWidget> {
-  final _unfocusNode = FocusNode();
+  late MyActivitesModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MyActivitesModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -46,8 +58,8 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                   if (!snapshot.hasData) {
                     return Center(
                       child: SizedBox(
-                        width: 50,
-                        height: 50,
+                        width: 50.0,
+                        height: 50.0,
                         child: CircularProgressIndicator(
                           color: Color(0xFF0184BD),
                         ),
@@ -69,11 +81,12 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                       children: [
                         TabBar(
                           labelColor: Color(0xFF777373),
-                          labelStyle:
-                              FlutterFlowTheme.of(context).title2.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 16,
-                                  ),
+                          labelStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
+                                fontFamily: 'Poppins',
+                                fontSize: 16.0,
+                              ),
                           indicatorColor:
                               FlutterFlowTheme.of(context).alternate,
                           tabs: [
@@ -113,8 +126,8 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                               if (!snapshot.hasData) {
                                                 return Center(
                                                   child: SizedBox(
-                                                    width: 50,
-                                                    height: 50,
+                                                    width: 50.0,
+                                                    height: 50.0,
                                                     child:
                                                         CircularProgressIndicator(
                                                       color: Color(0xFF0184BD),
@@ -142,26 +155,30 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                16, 12, 16, 0),
+                                                                16.0,
+                                                                12.0,
+                                                                16.0,
+                                                                0.0),
                                                     child: Container(
                                                       width:
                                                           MediaQuery.of(context)
-                                                              .size
-                                                              .width,
+                                                                  .size
+                                                                  .width *
+                                                              1.0,
                                                       decoration: BoxDecoration(
                                                         color: Colors.white,
                                                         boxShadow: [
                                                           BoxShadow(
-                                                            blurRadius: 3,
+                                                            blurRadius: 3.0,
                                                             color: Color(
                                                                 0x25000000),
-                                                            offset:
-                                                                Offset(0, 2),
+                                                            offset: Offset(
+                                                                0.0, 2.0),
                                                           )
                                                         ],
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(8),
+                                                                .circular(8.0),
                                                       ),
                                                       child: Row(
                                                         mainAxisSize:
@@ -174,10 +191,10 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        12,
-                                                                        12,
-                                                                        16,
-                                                                        12),
+                                                                        12.0,
+                                                                        12.0,
+                                                                        16.0,
+                                                                        12.0),
                                                             child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -191,14 +208,14 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                                       .oppName!,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title2
+                                                                      .headlineMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Outfit',
                                                                         color: Color(
                                                                             0xFF101213),
                                                                         fontSize:
-                                                                            22,
+                                                                            22.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -206,23 +223,23 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0,
-                                                                          4,
-                                                                          0,
-                                                                          0),
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Text(
                                                                     listViewOpportunitiesRecord
                                                                         .opProvider!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText2
+                                                                        .bodySmall
                                                                         .override(
                                                                           fontFamily:
                                                                               'Outfit',
                                                                           color:
                                                                               Color(0xFF57636C),
                                                                           fontSize:
-                                                                              14,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
                                                                         ),
@@ -231,23 +248,23 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0,
-                                                                          4,
-                                                                          0,
-                                                                          0),
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child: Text(
                                                                     listViewOpportunitiesRecord
                                                                         .status!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Outfit',
                                                                           color:
                                                                               Color(0xFF4B39EF),
                                                                           fontSize:
-                                                                              14,
+                                                                              14.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -260,10 +277,10 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        160,
-                                                                        0,
-                                                                        0,
-                                                                        0),
+                                                                        160.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
                                                             child: InkWell(
                                                               onTap: () async {
                                                                 if (Navigator.of(
@@ -290,7 +307,7 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                                     .arrow_forward_ios_rounded,
                                                                 color: Colors
                                                                     .black,
-                                                                size: 24,
+                                                                size: 24.0,
                                                               ),
                                                             ),
                                                           ),
@@ -324,8 +341,8 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                         if (!snapshot.hasData) {
                                           return Center(
                                             child: SizedBox(
-                                              width: 50,
-                                              height: 50,
+                                              width: 50.0,
+                                              height: 50.0,
                                               child: CircularProgressIndicator(
                                                 color: Color(0xFF0184BD),
                                               ),
@@ -349,22 +366,25 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                     listViewIndex];
                                             return Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(16, 12, 16, 0),
+                                                  .fromSTEB(
+                                                      16.0, 12.0, 16.0, 0.0),
                                               child: Container(
                                                 width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
+                                                        .size
+                                                        .width *
+                                                    1.0,
                                                 decoration: BoxDecoration(
                                                   color: Colors.white,
                                                   boxShadow: [
                                                     BoxShadow(
-                                                      blurRadius: 3,
+                                                      blurRadius: 3.0,
                                                       color: Color(0x25000000),
-                                                      offset: Offset(0, 2),
+                                                      offset: Offset(0.0, 2.0),
                                                     )
                                                   ],
                                                   borderRadius:
-                                                      BorderRadius.circular(8),
+                                                      BorderRadius.circular(
+                                                          8.0),
                                                 ),
                                                 child: Row(
                                                   mainAxisSize:
@@ -375,8 +395,11 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                     Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
-                                                              .fromSTEB(12, 12,
-                                                                  16, 12),
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  12.0,
+                                                                  166.0,
+                                                                  12.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -389,13 +412,14 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                                 .actName!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .title2
+                                                                .headlineMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Outfit',
                                                                   color: Color(
                                                                       0xFF101213),
-                                                                  fontSize: 22,
+                                                                  fontSize:
+                                                                      22.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -405,22 +429,22 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        4,
-                                                                        0,
-                                                                        0),
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
                                                             child: Text(
                                                               currentUserEmail,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText2
+                                                                  .bodySmall
                                                                   .override(
                                                                     fontFamily:
                                                                         'Outfit',
                                                                     color: Color(
                                                                         0xFF57636C),
                                                                     fontSize:
-                                                                        14,
+                                                                        14.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
@@ -431,23 +455,23 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        4,
-                                                                        0,
-                                                                        0),
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
                                                             child: Text(
                                                               listViewExtraActsRecord
                                                                   .status!,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Outfit',
                                                                     color: Color(
                                                                         0xFF4B39EF),
                                                                     fontSize:
-                                                                        14,
+                                                                        14.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -457,37 +481,30 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                         ],
                                                       ),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  160, 0, 0, 0),
-                                                      child: InkWell(
-                                                        onTap: () async {
-                                                          if (Navigator.of(
-                                                                  context)
-                                                              .canPop()) {
-                                                            context.pop();
-                                                          }
-                                                          context.pushNamed(
-                                                            'MyActDetails',
-                                                            queryParams: {
-                                                              'actsdetails':
-                                                                  serializeParam(
-                                                                listViewExtraActsRecord
-                                                                    .actID,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        },
-                                                        child: Icon(
-                                                          Icons
-                                                              .arrow_forward_ios_rounded,
-                                                          color: Colors.black,
-                                                          size: 24,
-                                                        ),
+                                                    InkWell(
+                                                      onTap: () async {
+                                                        if (Navigator.of(
+                                                                context)
+                                                            .canPop()) {
+                                                          context.pop();
+                                                        }
+                                                        context.pushNamed(
+                                                          'MyActDetails',
+                                                          queryParams: {
+                                                            'actsdetails':
+                                                                serializeParam(
+                                                              listViewExtraActsRecord
+                                                                  .actID,
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Icon(
+                                                        Icons
+                                                            .arrow_forward_ios_rounded,
+                                                        color: Colors.black,
+                                                        size: 24.0,
                                                       ),
                                                     ),
                                                   ],
