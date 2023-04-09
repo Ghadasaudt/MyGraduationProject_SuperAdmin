@@ -214,6 +214,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'profile')
                   : ProfileWidget(),
+            ),
+            FFRoute(
+              name: 'ManageRequestDetailsCopy',
+              path: 'manageRequestDetailsCopy',
+              requireAuth: true,
+              builder: (context, params) => ManageRequestDetailsCopyWidget(
+                actsdetails: params.getParam('actsdetails', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

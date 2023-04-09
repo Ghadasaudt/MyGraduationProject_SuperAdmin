@@ -162,11 +162,15 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.flaky_rounded,
               size: 24.0,
             ),
-            label: 'طلبات الإضافة',
+            label: 'إدارة الطلبات',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.dashboard_outlined,
+              size: 24.0,
+            ),
+            activeIcon: Icon(
               Icons.dashboard_rounded,
               size: 24.0,
             ),

@@ -20,3 +20,5 @@ export '/my_activites/my_activites_widget.dart' show MyActivitesWidget;
 export '/my_act_details/my_act_details_widget.dart' show MyActDetailsWidget;
 export '/my_opp_details/my_opp_details_widget.dart' show MyOppDetailsWidget;
 export '/profile/profile_widget.dart' show ProfileWidget;
+export '/manage_request_details_copy/manage_request_details_copy_widget.dart'
+    show ManageRequestDetailsCopyWidget;
