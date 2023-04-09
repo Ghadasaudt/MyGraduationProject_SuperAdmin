@@ -46,49 +46,49 @@ class _CoursesWidgetState extends State<CoursesWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFFF4F3F0),
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: Color(0xFFF4F3F0),
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30.0,
-          buttonSize: 60.0,
-          icon: Icon(
-            Icons.chevron_left_rounded,
-            color: Color(0xFF7EAEBD),
-            size: 30.0,
+        appBar: AppBar(
+          backgroundColor: Color(0xFFF4F3F0),
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            buttonSize: 60.0,
+            icon: Icon(
+              Icons.chevron_left_rounded,
+              color: Color(0xFF7EAEBD),
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.goNamed(
+                'HomePage',
+                extra: <String, dynamic>{
+                  kTransitionInfoKey: TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.rightToLeft,
+                  ),
+                },
+              );
+            },
           ),
-          onPressed: () async {
-            context.goNamed(
-              'HomePage',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
+          title: Text(
+            'الدورات',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF7EAEBD),
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
                 ),
-              },
-            );
-          },
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 2.0,
         ),
-        title: Text(
-          'الدورات',
-          style: FlutterFlowTheme.of(context).headlineMedium.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF7EAEBD),
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-        actions: [],
-        centerTitle: true,
-        elevation: 2.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        body: SafeArea(
           child: SingleChildScrollView(
             primary: false,
             child: Column(

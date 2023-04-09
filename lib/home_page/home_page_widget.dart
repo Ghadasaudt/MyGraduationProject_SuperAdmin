@@ -1,4 +1,3 @@
-import '/auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -38,12 +37,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFFF4F3F0),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Color(0xFFF4F3F0),
+        body: SafeArea(
           child: Stack(
             children: [
               Image.asset(
@@ -227,110 +226,98 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ],
                                   ),
                                 ),
-                                if (valueOrDefault(
-                                        currentUserDocument?.type, '') ==
-                                    'admin')
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 0.0, 20.0, 15.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Container(
-                                        width: double.infinity,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFAF1),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            context.goNamed('addActivity');
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.add_rounded,
-                                                color: Color(0xFF777373),
-                                                size: 20.0,
-                                              ),
-                                              Text(
-                                                'إضافة فرصة',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.getFont(
-                                                  'Open Sans',
-                                                  color: Color(0xFF777373),
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 20.0,
-                                                ),
-                                              ),
-                                            ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 0.0, 20.0, 15.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFFFFAF1),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        context.goNamed('addActivity');
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.add_rounded,
+                                            color: Color(0xFF777373),
+                                            size: 20.0,
                                           ),
-                                        ),
+                                          Text(
+                                            'إضافة فرصة',
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.getFont(
+                                              'Open Sans',
+                                              color: Color(0xFF777373),
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 20.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
-                                if (valueOrDefault(
-                                        currentUserDocument?.type, '') ==
-                                    'admin')
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 15.0, 20.0, 30.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Container(
-                                        width: double.infinity,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFAF1),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            context.goNamed('addopp');
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.add_rounded,
-                                                color: Color(0xFF777373),
-                                                size: 20.0,
-                                              ),
-                                              Text(
-                                                'إضافة نشاط',
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.getFont(
-                                                  'Open Sans',
-                                                  color: Color(0xFF777373),
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 20.0,
-                                                ),
-                                              ),
-                                            ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 15.0, 20.0, 30.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFFFFAF1),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        context.goNamed('addopp');
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.add_rounded,
+                                            color: Color(0xFF777373),
+                                            size: 20.0,
                                           ),
-                                        ),
+                                          Text(
+                                            'إضافة نشاط',
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.getFont(
+                                              'Open Sans',
+                                              color: Color(0xFF777373),
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 20.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
+                                ),
                               ],
                             ),
                           ),

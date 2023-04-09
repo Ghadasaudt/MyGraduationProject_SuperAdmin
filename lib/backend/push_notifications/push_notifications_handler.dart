@@ -155,6 +155,11 @@ final parametersBuilderMap =
         },
       ),
   'profile': ParameterData.none(),
+  'ManageRequestDetailsCopy': (data) async => ParameterData(
+        allParams: {
+          'actsdetails': getParameter<String>(data, 'actsdetails'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

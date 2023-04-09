@@ -217,9 +217,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           isScrollControlled: true,
                                           backgroundColor: Color(0x00FFFFFF),
                                           context: context,
-                                          builder: (context) {
+                                          builder: (bottomSheetContext) {
                                             return Padding(
-                                              padding: MediaQuery.of(context)
+                                              padding: MediaQuery.of(
+                                                      bottomSheetContext)
                                                   .viewInsets,
                                               child: EditInfoComponentWidget(),
                                             );
