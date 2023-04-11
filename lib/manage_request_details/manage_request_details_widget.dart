@@ -503,8 +503,47 @@ class _ManageRequestDetailsWidgetState
                                               .status !=
                                           'معلق'
                                       ? null
-                                      : () {
-                                          print('Button pressed ...');
+                                      : () async {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'تأكيد رفض الطلب'),
+                                                        content: Text(
+                                                            'هل أنت متأكد من رفض هذا الطلب؟ لا يمكنك التراجع عن هذه العملية'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child: Text('لا'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('تأكيد'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            final extraActsUpdateData =
+                                                createExtraActsRecordData(
+                                              status: 'مرفوضة',
+                                            );
+                                            await scrollingContainerExtraActsRecord!
+                                                .reference
+                                                .update(extraActsUpdateData);
+                                          }
                                         },
                                   text: 'رفض',
                                   options: FFButtonOptions(

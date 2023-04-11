@@ -166,14 +166,14 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
@@ -223,14 +223,14 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
@@ -282,14 +282,14 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
@@ -422,13 +422,11 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  if (_model.uploadedFileUrl == null ||
-                                      _model.uploadedFileUrl == '')
-                                    Icon(
-                                      Icons.image_outlined,
-                                      color: Color(0xFF57636C),
-                                      size: 24.0,
-                                    ),
+                                  Icon(
+                                    Icons.image_outlined,
+                                    color: Color(0xFF57636C),
+                                    size: 24.0,
+                                  ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 0.0, 0.0, 0.0),
@@ -1163,6 +1161,21 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                   if (_model.formKey.currentState == null ||
                                       !_model.formKey.currentState!
                                           .validate()) {
+                                    return;
+                                  }
+                                  if (_model.actTypeValue == null) {
+                                    return;
+                                  }
+                                  if (_model.datePicked1 == null) {
+                                    return;
+                                  }
+                                  if (_model.datePicked2 == null) {
+                                    return;
+                                  }
+                                  if (_model.datePicked3 == null) {
+                                    return;
+                                  }
+                                  if (_model.datePicked4 == null) {
                                     return;
                                   }
 

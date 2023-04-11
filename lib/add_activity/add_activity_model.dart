@@ -24,12 +24,36 @@ class AddActivityModel extends FlutterFlowModel {
   // State field(s) for actName widget.
   TextEditingController? actNameController;
   String? Function(BuildContext, String?)? actNameControllerValidator;
+  String? _actNameControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'يجب تعبئة الحقل';
+    }
+
+    return null;
+  }
+
   // State field(s) for actLoc widget.
   TextEditingController? actLocController;
   String? Function(BuildContext, String?)? actLocControllerValidator;
+  String? _actLocControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'يجب تعبئة الحقل';
+    }
+
+    return null;
+  }
+
   // State field(s) for actBio widget.
   TextEditingController? actBioController;
   String? Function(BuildContext, String?)? actBioControllerValidator;
+  String? _actBioControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'يجب تعبئة الحقل';
+    }
+
+    return null;
+  }
+
   // State field(s) for actType widget.
   String? actTypeValue;
   FormFieldController<String>? actTypeController;
@@ -50,7 +74,11 @@ class AddActivityModel extends FlutterFlowModel {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    actNameControllerValidator = _actNameControllerValidator;
+    actLocControllerValidator = _actLocControllerValidator;
+    actBioControllerValidator = _actBioControllerValidator;
+  }
 
   void dispose() {
     actNameController?.dispose();

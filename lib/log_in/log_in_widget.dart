@@ -175,7 +175,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Color(0xE1FF2323),
+                                                    color: Color(0xFFB72F31),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
@@ -185,7 +185,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Color(0xE1FF2323),
+                                                    color: Color(0xFFB72F31),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
@@ -254,7 +254,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Color(0xE1FF2323),
+                                                    color: Color(0xFFB72F31),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
@@ -264,7 +264,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Color(0xE1FF2323),
+                                                    color: Color(0xFFB72F31),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
@@ -355,7 +355,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                   },
                                                 );
                                               } else {
-                                                context.pushNamedAuth(
+                                                context.goNamedAuth(
                                                     'HomePage', mounted);
                                               }
                                             },
@@ -381,6 +381,35 @@ class _LogInWidgetState extends State<LogInWidget> {
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(25.0),
+                                            ),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            if (_model
+                                                .emailController.text.isEmpty) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'يجب إدخال البريد الإلكتروني',
+                                                  ),
+                                                ),
+                                              );
+                                              return;
+                                            }
+                                            await resetPassword(
+                                              email:
+                                                  _model.emailController.text,
+                                              context: context,
+                                            );
+                                          },
+                                          child: Text(
+                                            'استرجاع كلمة المرور؟',
+                                            style: GoogleFonts.getFont(
+                                              'Open Sans',
+                                              color: Color(0xFF494646),
+                                              fontWeight: FontWeight.normal,
                                             ),
                                           ),
                                         ),
