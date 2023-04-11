@@ -165,14 +165,14 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
@@ -230,14 +230,14 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
@@ -345,8 +345,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                         FFAppState().removeFromNumskills('1');
                                       });
                                       setState(() {
-                                        FFAppState().removeFromSkilllist(
-                                            _model.oppskill2Controller.text);
+                                        _model.oppskill2Controller?.clear();
                                       });
                                     },
                                     child: Icon(
@@ -443,8 +442,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                         FFAppState().removeFromNumskills('2');
                                       });
                                       setState(() {
-                                        FFAppState().removeFromSkilllist(
-                                            _model.oppskill3Controller.text);
+                                        _model.oppskill3Controller?.clear();
                                       });
                                     },
                                     child: Icon(
@@ -544,8 +542,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                         FFAppState().removeFromNumskills('3');
                                       });
                                       setState(() {
-                                        FFAppState().removeFromSkilllist(
-                                            _model.oppskill4Controller.text);
+                                        _model.oppskill4Controller?.clear();
                                       });
                                     },
                                     child: Icon(
@@ -642,8 +639,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                         FFAppState().removeFromNumskills('4');
                                       });
                                       setState(() {
-                                        FFAppState().removeFromSkilllist(
-                                            _model.oppskill5Controller.text);
+                                        _model.oppskill5Controller?.clear();
                                       });
                                     },
                                     child: Icon(
@@ -668,7 +664,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                 borderRadius: 25.0,
                                 borderWidth: 0.0,
                                 buttonSize: 35.0,
-                                disabledColor: Color(0xFF57636C),
+                                disabledIconColor: Color(0xFF57636C),
                                 icon: Icon(
                                   Icons.add_circle_outline_rounded,
                                   color: Color(0xFF7EAEBD),
@@ -771,14 +767,14 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF7EAEBD),
+                                    color: Color(0xFFB72F31),
                                     width: 2.0,
                                   ),
                                   borderRadius: BorderRadius.circular(25.0),
@@ -1140,6 +1136,39 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                               20.0, 0.0, 20.0, 30.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              setState(() {
+                                FFAppState().addToSkilllist(
+                                    _model.oppskill1Controller.text);
+                              });
+                              if (_model.oppskill2Controller.text != null &&
+                                  _model.oppskill2Controller.text != '') {
+                                setState(() {
+                                  FFAppState().addToSkilllist(
+                                      _model.oppskill2Controller.text);
+                                });
+                              }
+                              if (_model.oppskill3Controller.text != null &&
+                                  _model.oppskill3Controller.text != '') {
+                                setState(() {
+                                  FFAppState().addToSkilllist(
+                                      _model.oppskill3Controller.text);
+                                });
+                              }
+                              if (_model.oppskill4Controller.text != null &&
+                                  _model.oppskill4Controller.text != '') {
+                                setState(() {
+                                  FFAppState().addToSkilllist(
+                                      _model.oppskill4Controller.text);
+                                });
+                              }
+                              if (_model.oppskill5Controller.text != null &&
+                                  _model.oppskill5Controller.text != '') {
+                                setState(() {
+                                  FFAppState().addToSkilllist(
+                                      _model.oppskill5Controller.text);
+                                });
+                              }
+
                               final opportunitiesCreateData = {
                                 ...createOpportunitiesRecordData(
                                   opDesc: _model.oppdesController.text,
