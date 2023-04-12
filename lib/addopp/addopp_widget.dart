@@ -201,10 +201,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.oppskill1Controller',
                                 Duration(milliseconds: 2000),
-                                () async {
-                                  FFAppState().addToSkilllist(
-                                      _model.oppskill1Controller.text);
-                                },
+                                () => setState(() {}),
                               ),
                               obscureText: false,
                               decoration: InputDecoration(
@@ -274,10 +271,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.oppskill2Controller',
                                         Duration(milliseconds: 2000),
-                                        () async {
-                                          FFAppState().addToSkilllist(
-                                              _model.oppskill2Controller.text);
-                                        },
+                                        () => setState(() {}),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -372,10 +366,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.oppskill3Controller',
                                       Duration(milliseconds: 2000),
-                                      () async {
-                                        FFAppState().addToSkilllist(
-                                            _model.oppskill3Controller.text);
-                                      },
+                                      () => setState(() {}),
                                     ),
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -471,10 +462,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.oppskill4Controller',
                                         Duration(milliseconds: 2000),
-                                        () async {
-                                          FFAppState().addToSkilllist(
-                                              _model.oppskill4Controller.text);
-                                        },
+                                        () => setState(() {}),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -569,10 +557,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.oppskill5Controller',
                                       Duration(milliseconds: 2000),
-                                      () async {
-                                        FFAppState().addToSkilllist(
-                                            _model.oppskill5Controller.text);
-                                      },
+                                      () => setState(() {}),
                                     ),
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -1168,6 +1153,19 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                       _model.oppskill5Controller.text);
                                 });
                               }
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
+                                return;
+                              }
+                              if (_model.datePicked1 == null) {
+                                return;
+                              }
+                              if (_model.datePicked2 == null) {
+                                return;
+                              }
+                              if (_model.datePicked3 == null) {
+                                return;
+                              }
 
                               final opportunitiesCreateData = {
                                 ...createOpportunitiesRecordData(
@@ -1196,13 +1194,13 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                               FFAppState().numskills = [];
                               FFAppState().skilllist = [];
                               triggerPushNotification(
-                                notificationTitle: 'طلب إضافة فرصة ',
+                                notificationTitle: 'تمت إضافة فرصة ',
                                 notificationText:
-                                    'بعنوان${_model.oppNameController.text}',
+                                    'بعنوان ${_model.oppNameController.text}',
                                 notificationSound: 'default',
                                 userRefs:
                                     addoppNotifyRecord!.multiuser!.toList(),
-                                initialPageName: 'HomePage',
+                                initialPageName: 'courses',
                                 parameterData: {},
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
