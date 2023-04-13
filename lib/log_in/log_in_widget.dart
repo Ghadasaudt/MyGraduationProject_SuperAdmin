@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'log_in_model.dart';
 export 'log_in_model.dart';
+import 'dart:ui' as ui;
 
 class LogInWidget extends StatefulWidget {
   const LogInWidget({Key? key}) : super(key: key);
@@ -200,6 +201,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                 color: Color(0xFF565656),
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                              textDirection:
+                                                  ui.TextDirection.ltr,
                                               textAlign: TextAlign.start,
                                               validator: _model
                                                   .emailControllerValidator
@@ -300,6 +303,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                 color: Color(0xFF565656),
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                              textDirection:
+                                                  ui.TextDirection.ltr,
                                               textAlign: TextAlign.start,
                                               validator: _model
                                                   .passwordControllerValidator

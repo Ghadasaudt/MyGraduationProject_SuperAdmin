@@ -159,7 +159,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     builder: (context) => SelectionArea(
                                         child: Text(
                                       'مرحباً ${currentUserDisplayName}!',
-                                      textAlign: TextAlign.end,
+                                      textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
