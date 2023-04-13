@@ -1,5 +1,7 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -361,6 +363,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ],
                   ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-0.8, -0.9),
+                child: FutureBuilder<int>(
+                  future: queryExtraActsRecordCount(
+                    queryBuilder: (extraActsRecord) =>
+                        extraActsRecord.where('status', isEqualTo: 'معلق'),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            color: Color(0xFF0184BD),
+                          ),
+                        ),
+                      );
+                    }
+                    int badgeCount = snapshot.data!;
+                    return badges.Badge(
+                      badgeContent: Text(
+                        valueOrDefault<String>(
+                          badgeCount.toString(),
+                          '0',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 7.0,
+                            ),
+                      ),
+                      showBadge: true,
+                      shape: badges.BadgeShape.circle,
+                      badgeColor: Color(0xFFB24545),
+                      elevation: 4.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                      position: badges.BadgePosition.topStart(),
+                      animationType: badges.BadgeAnimationType.scale,
+                      toAnimate: true,
+                      child: InkWell(
+                        onTap: () async {
+                          context.goNamed('ManageRequests');
+                        },
+                        child: Icon(
+                          Icons.notifications,
+                          color: Color(0xFF777373),
+                          size: 30.0,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
