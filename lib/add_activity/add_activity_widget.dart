@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
@@ -314,7 +314,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 15.0),
                           child: FlutterFlowDropDown<String>(
-                            controller: _model.actTypeController ??=
+                            controller: _model.actTypeValueController ??=
                                 FormFieldController<String>(null),
                             options: ['دورة تدريبية', 'ورشة عمل', 'فعالية'],
                             onChanged: (val) =>

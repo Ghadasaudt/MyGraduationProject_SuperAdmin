@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -321,8 +321,8 @@ class _LogInWidgetState extends State<LogInWidget> {
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
 
-                                              final user =
-                                                  await signInWithEmail(
+                                              final user = await authManager
+                                                  .signInWithEmail(
                                                 context,
                                                 _model.emailController.text,
                                                 _model.passwordController.text,
@@ -340,7 +340,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                                   'super admin') {
                                                 GoRouter.of(context)
                                                     .prepareAuthEvent();
-                                                await signOut();
+                                                await authManager.signOut();
                                                 GoRouter.of(context)
                                                     .clearRedirectLocation();
 
@@ -403,7 +403,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                               );
                                               return;
                                             }
-                                            await resetPassword(
+                                            await authManager.resetPassword(
                                               email:
                                                   _model.emailController.text,
                                               context: context,

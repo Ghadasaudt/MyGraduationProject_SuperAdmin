@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -119,7 +119,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
               width: double.infinity,
               child: Form(
                 key: _model.formKey,
-                autovalidateMode: AutovalidateMode.always,
+                autovalidateMode: AutovalidateMode.disabled,
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
