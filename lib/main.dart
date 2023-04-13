@@ -80,7 +80,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'CountMeInSuperAdmin',
+      debugShowCheckedModeBanner: false,
+      title: 'Count Me In Super Admin',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
