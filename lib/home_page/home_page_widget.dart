@@ -245,7 +245,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     child: InkWell(
                                       onTap: () async {
-                                        context.goNamed('addActivity');
+                                        context.goNamed('addopp');
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -291,7 +291,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     child: InkWell(
                                       onTap: () async {
-                                        context.goNamed('addopp');
+                                        context.goNamed('addActivity');
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
