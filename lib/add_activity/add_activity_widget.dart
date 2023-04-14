@@ -1212,7 +1212,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                   triggerPushNotification(
                                     notificationTitle: 'تمت إضافة نشاط ',
                                     notificationText:
-                                        'بعنوان${_model.actNameController.text}',
+                                        'بعنوان ${_model.actNameController.text}',
                                     notificationSound: 'default',
                                     userRefs: addActivityNotifyRecord!
                                         .multiuser!
