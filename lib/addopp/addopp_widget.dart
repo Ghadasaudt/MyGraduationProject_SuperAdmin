@@ -1200,7 +1200,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                 notificationSound: 'default',
                                 userRefs:
                                     addoppNotifyRecord!.multiuser!.toList(),
-                                initialPageName: 'courses',
+                                initialPageName: 'HomePage',
                                 parameterData: {},
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
