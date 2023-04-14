@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -414,77 +415,127 @@ class _ManageRequestDetailsWidgetState
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 30.0, 20.0, 30.0),
-                                child: FFButtonWidget(
-                                  onPressed: scrollingContainerExtraActsRecord!
-                                              .status !=
-                                          'معلق'
-                                      ? null
-                                      : () async {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'تأكيد قبول الطلب'),
-                                                        content: Text(
-                                                            'هل أنت متأكد من قبول هذا الطلب؟ لا يمكنك التراجع عن هذه العملية'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child: Text('لا'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child:
-                                                                Text('تأكيد'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            final extraActsUpdateData =
-                                                createExtraActsRecordData(
-                                              status: 'موافق عليها',
-                                            );
-                                            await scrollingContainerExtraActsRecord!
-                                                .reference
-                                                .update(extraActsUpdateData);
-                                          }
-                                        },
-                                  text: 'قبول',
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).success,
-                                    textStyle: GoogleFonts.getFont(
-                                      'Open Sans',
-                                      color: Color(0xFFF4F3F0),
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18.0,
-                                    ),
-                                    elevation: 2.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 0.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    disabledColor:
-                                        FlutterFlowTheme.of(context).grayIcon,
+                                child: StreamBuilder<List<NotifyRecord>>(
+                                  stream: queryNotifyRecord(
+                                    queryBuilder: (notifyRecord) =>
+                                        notifyRecord.where('act_ID',
+                                            isEqualTo: 'all activities'),
+                                    singleRecord: true,
                                   ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            color: Color(0xFF0184BD),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<NotifyRecord> buttonNotifyRecordList =
+                                        snapshot.data!;
+                                    final buttonNotifyRecord =
+                                        buttonNotifyRecordList.isNotEmpty
+                                            ? buttonNotifyRecordList.first
+                                            : null;
+                                    return FFButtonWidget(
+                                      onPressed:
+                                          scrollingContainerExtraActsRecord!
+                                                      .status !=
+                                                  'معلق'
+                                              ? null
+                                              : () async {
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'تأكيد قبول الطلب'),
+                                                                content: Text(
+                                                                    'هل أنت متأكد من قبول هذا الطلب؟ لا يمكنك التراجع عن هذه العملية'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'لا'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'تأكيد'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
+                                                  if (confirmDialogResponse) {
+                                                    final extraActsUpdateData =
+                                                        createExtraActsRecordData(
+                                                      status: 'موافق عليها',
+                                                    );
+                                                    await scrollingContainerExtraActsRecord!
+                                                        .reference
+                                                        .update(
+                                                            extraActsUpdateData);
+                                                    triggerPushNotification(
+                                                      notificationTitle:
+                                                          'تم إضافة ${scrollingContainerExtraActsRecord!.actType}',
+                                                      notificationText:
+                                                          'بعنوان ${scrollingContainerExtraActsRecord!.actName}',
+                                                      notificationSound:
+                                                          'default',
+                                                      userRefs:
+                                                          buttonNotifyRecord!
+                                                              .multiuser!
+                                                              .toList(),
+                                                      initialPageName:
+                                                          'HomePage',
+                                                      parameterData: {},
+                                                    );
+                                                  }
+                                                },
+                                      text: 'قبول',
+                                      options: FFButtonOptions(
+                                        width: double.infinity,
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .success,
+                                        textStyle: GoogleFonts.getFont(
+                                          'Open Sans',
+                                          color: Color(0xFFF4F3F0),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18.0,
+                                        ),
+                                        elevation: 2.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 0.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                        disabledColor:
+                                            FlutterFlowTheme.of(context)
+                                                .grayIcon,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                               Padding(

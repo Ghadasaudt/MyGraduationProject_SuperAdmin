@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -350,6 +351,136 @@ class _ManageRequestDetailsCopyWidgetState
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 30.0, 20.0, 30.0),
+                                child: StreamBuilder<List<NotifyRecord>>(
+                                  stream: queryNotifyRecord(
+                                    queryBuilder: (notifyRecord) =>
+                                        notifyRecord.where('act_ID',
+                                            isEqualTo: 'all opportunities'),
+                                    singleRecord: true,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            color: Color(0xFF0184BD),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<NotifyRecord> buttonNotifyRecordList =
+                                        snapshot.data!;
+                                    final buttonNotifyRecord =
+                                        buttonNotifyRecordList.isNotEmpty
+                                            ? buttonNotifyRecordList.first
+                                            : null;
+                                    return FFButtonWidget(
+                                      onPressed:
+                                          scrollingContainerOpportunitiesRecord!
+                                                      .status !=
+                                                  'معلق'
+                                              ? null
+                                              : () async {
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'تأكيد قبول الطلب'),
+                                                                content: Text(
+                                                                    'هل أنت متأكد من قبول هذا الطلب؟ لا يمكنك التراجع عن هذه العملية'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'لا'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'تأكيد'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
+                                                  if (confirmDialogResponse) {
+                                                    final opportunitiesUpdateData =
+                                                        createOpportunitiesRecordData(
+                                                      status: 'موافق عليها',
+                                                    );
+                                                    await scrollingContainerOpportunitiesRecord!
+                                                        .reference
+                                                        .update(
+                                                            opportunitiesUpdateData);
+                                                    triggerPushNotification(
+                                                      notificationTitle:
+                                                          'تم إضافة فرصة ',
+                                                      notificationText:
+                                                          'بعنوان ${scrollingContainerOpportunitiesRecord!.oppName}',
+                                                      notificationSound:
+                                                          'default',
+                                                      userRefs:
+                                                          buttonNotifyRecord!
+                                                              .multiuser!
+                                                              .toList(),
+                                                      initialPageName:
+                                                          'Opportunity_apply_form',
+                                                      parameterData: {
+                                                        'opportunityID':
+                                                            scrollingContainerOpportunitiesRecord!
+                                                                .opID,
+                                                      },
+                                                    );
+                                                  }
+                                                },
+                                      text: 'قبول',
+                                      options: FFButtonOptions(
+                                        width: double.infinity,
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .success,
+                                        textStyle: GoogleFonts.getFont(
+                                          'Open Sans',
+                                          color: Color(0xFFF4F3F0),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18.0,
+                                        ),
+                                        elevation: 2.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 0.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                        disabledColor:
+                                            FlutterFlowTheme.of(context)
+                                                .grayIcon,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 20.0, 30.0),
                                 child: FFButtonWidget(
                                   onPressed:
                                       scrollingContainerOpportunitiesRecord!
@@ -364,9 +495,9 @@ class _ManageRequestDetailsCopyWidgetState
                                                             (alertDialogContext) {
                                                           return AlertDialog(
                                                             title: Text(
-                                                                'تأكيد قبول الطلب'),
+                                                                'تأكيد رفض الطلب'),
                                                             content: Text(
-                                                                'هل أنت متأكد من قبول هذا الطلب؟ لا يمكنك التراجع عن هذه العملية'),
+                                                                'هل أنت متأكد من رفض هذا الطلب؟ لا يمكنك التراجع عن هذه العملية'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>
@@ -392,51 +523,13 @@ class _ManageRequestDetailsCopyWidgetState
                                               if (confirmDialogResponse) {
                                                 final opportunitiesUpdateData =
                                                     createOpportunitiesRecordData(
-                                                  status: 'موافق عليها',
+                                                  status: 'مرفوضة',
                                                 );
                                                 await scrollingContainerOpportunitiesRecord!
                                                     .reference
                                                     .update(
                                                         opportunitiesUpdateData);
                                               }
-                                            },
-                                  text: 'قبول',
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).success,
-                                    textStyle: GoogleFonts.getFont(
-                                      'Open Sans',
-                                      color: Color(0xFFF4F3F0),
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18.0,
-                                    ),
-                                    elevation: 2.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 0.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    disabledColor:
-                                        FlutterFlowTheme.of(context).grayIcon,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 30.0),
-                                child: FFButtonWidget(
-                                  onPressed:
-                                      scrollingContainerOpportunitiesRecord!
-                                                  .status !=
-                                              'معلق'
-                                          ? null
-                                          : () {
-                                              print('Button pressed ...');
                                             },
                                   text: 'رفض',
                                   options: FFButtonOptions(
