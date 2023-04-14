@@ -387,213 +387,224 @@ class _ManageRequestsWidgetState extends State<ManageRequestsWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       15.0, 0.0, 15.0, 15.0),
-                                              child: Container(
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 4.0,
-                                                      color: Color(0x33000000),
-                                                      offset: Offset(0.0, 2.0),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          25.0),
-                                                ),
-                                                child: Visibility(
-                                                  visible: functions.showSearchResultOp(
-                                                      _model
-                                                          .fieldSearchController1
-                                                          .text,
-                                                      listViewOpportunitiesRecord
-                                                          .oppName!),
-                                                  child: Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.35, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  15.0,
-                                                                  15.0,
-                                                                  15.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0,
-                                                                        10.0),
-                                                                child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              25.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      listViewOpportunitiesRecord
-                                                                          .opProviderLogo,
-                                                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS95ie8G-8S3i_QsaD4Gjs1HQHIxBMPcoVLA&usqp=CAU',
-                                                                    ),
-                                                                    width:
-                                                                        100.0,
-                                                                    height:
-                                                                        100.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Padding(
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'ManageRequestDetailsCopy',
+                                                    queryParams: {
+                                                      'actsdetails':
+                                                          serializeParam(
+                                                        listViewOpportunitiesRecord
+                                                            .opID,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            Color(0x33000000),
+                                                        offset:
+                                                            Offset(0.0, 2.0),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25.0),
+                                                  ),
+                                                  child: Visibility(
+                                                    visible: functions.showSearchResultOp(
+                                                        _model
+                                                            .fieldSearchController1
+                                                            .text,
+                                                        listViewOpportunitiesRecord
+                                                            .oppName!),
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.35, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    15.0,
+                                                                    15.0,
+                                                                    15.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
-                                                                          0.0,
                                                                           10.0,
-                                                                          0.0),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Text(
+                                                                          10.0,
+                                                                          10.0),
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            25.0),
+                                                                    child: Image
+                                                                        .network(
+                                                                      valueOrDefault<
+                                                                          String>(
                                                                         listViewOpportunitiesRecord
-                                                                            .opProvider!,
+                                                                            .opProviderLogo,
+                                                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS95ie8G-8S3i_QsaD4Gjs1HQHIxBMPcoVLA&usqp=CAU',
+                                                                      ),
+                                                                      width:
+                                                                          100.0,
+                                                                      height:
+                                                                          100.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                          listViewOpportunitiesRecord
+                                                                              .opProvider!,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodySmall
+                                                                              .override(
+                                                                                fontFamily: 'Outfit',
+                                                                                color: Color(0xFF57636C),
+                                                                                fontSize: 12.0,
+                                                                                fontWeight: FontWeight.normal,
+                                                                              ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            listViewOpportunitiesRecord.oppName!,
+                                                                            style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                  fontFamily: 'Outfit',
+                                                                                  color: Color(0xFF101213),
+                                                                                  fontSize: 18.0,
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      -0.05,
+                                                                      0.0),
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    InkWell(
+                                                                      onTap:
+                                                                          () async {
+                                                                        context
+                                                                            .goNamed(
+                                                                          'ManageRequestDetailsCopy',
+                                                                          queryParams:
+                                                                              {
+                                                                            'actsdetails':
+                                                                                serializeParam(
+                                                                              listViewOpportunitiesRecord.opID,
+                                                                              ParamType.String,
+                                                                            ),
+                                                                          }.withoutNulls,
+                                                                          extra: <
+                                                                              String,
+                                                                              dynamic>{
+                                                                            kTransitionInfoKey:
+                                                                                TransitionInfo(
+                                                                              hasTransition: true,
+                                                                              transitionType: PageTransitionType.leftToRight,
+                                                                            ),
+                                                                          },
+                                                                        );
+                                                                      },
+                                                                      child:
+                                                                          Text(
+                                                                        'للمزيد',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodySmall
+                                                                            .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Outfit',
-                                                                              color: Color(0xFF57636C),
-                                                                              fontSize: 12.0,
+                                                                              fontFamily: 'Poppins',
+                                                                              color: Color(0xFF777373),
                                                                               fontWeight: FontWeight.normal,
                                                                             ),
                                                                       ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          listViewOpportunitiesRecord
-                                                                              .oppName!,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .titleMedium
-                                                                              .override(
-                                                                                fontFamily: 'Outfit',
-                                                                                color: Color(0xFF101213),
-                                                                                fontSize: 18.0,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .chevron_right_rounded,
+                                                                      color: Color(
+                                                                          0xFF777373),
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
-                                                            ],
-                                                          ),
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -0.05, 0.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .end,
-                                                                children: [
-                                                                  InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      context
-                                                                          .goNamed(
-                                                                        'ManageRequestDetailsCopy',
-                                                                        queryParams:
-                                                                            {
-                                                                          'actsdetails':
-                                                                              serializeParam(
-                                                                            listViewOpportunitiesRecord.opID,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                        }.withoutNulls,
-                                                                        extra: <
-                                                                            String,
-                                                                            dynamic>{
-                                                                          kTransitionInfoKey:
-                                                                              TransitionInfo(
-                                                                            hasTransition:
-                                                                                true,
-                                                                            transitionType:
-                                                                                PageTransitionType.leftToRight,
-                                                                          ),
-                                                                        },
-                                                                      );
-                                                                    },
-                                                                    child: Text(
-                                                                      'للمزيد',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            color:
-                                                                                Color(0xFF777373),
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                  Icon(
-                                                                    Icons
-                                                                        .chevron_right_rounded,
-                                                                    color: Color(
-                                                                        0xFF777373),
-                                                                    size: 24.0,
-                                                                  ),
-                                                                ],
-                                                              ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -901,262 +912,188 @@ class _ManageRequestsWidgetState extends State<ManageRequestsWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(15.0, 0.0,
                                                                 15.0, 15.0),
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            blurRadius: 4.0,
-                                                            color: Color(
-                                                                0x33000000),
-                                                            offset: Offset(
-                                                                0.0, 2.0),
-                                                          )
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25.0),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    15.0,
-                                                                    15.0,
-                                                                    15.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0),
-                                                              child: InkWell(
-                                                                onTap:
-                                                                    () async {
-                                                                  await Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    PageTransition(
-                                                                      type: PageTransitionType
-                                                                          .fade,
-                                                                      child:
-                                                                          FlutterFlowExpandedImageView(
-                                                                        image: Image
-                                                                            .network(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            listViewExtraActsRecord.actPic,
-                                                                            'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
-                                                                          ),
-                                                                          fit: BoxFit
-                                                                              .contain,
-                                                                        ),
-                                                                        allowRotation:
-                                                                            false,
-                                                                        tag: valueOrDefault<
-                                                                            String>(
-                                                                          listViewExtraActsRecord
-                                                                              .actPic,
-                                                                          'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
-                                                                              '$listViewIndex',
-                                                                        ),
-                                                                        useHeroAnimation:
-                                                                            true,
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                                child: Hero(
-                                                                  tag: valueOrDefault<
-                                                                      String>(
-                                                                    listViewExtraActsRecord
-                                                                        .actPic,
-                                                                    'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
-                                                                        '$listViewIndex',
-                                                                  ),
-                                                                  transitionOnUserGestures:
-                                                                      true,
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            5.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        listViewExtraActsRecord
-                                                                            .actPic,
-                                                                        'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
-                                                                      ),
-                                                                      width: double
-                                                                          .infinity,
-                                                                      height:
-                                                                          110.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'ManageRequestDetails',
+                                                          queryParams: {
+                                                            'actsdetails':
+                                                                serializeParam(
+                                                              listViewExtraActsRecord
+                                                                  .actID,
+                                                              ParamType.String,
                                                             ),
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
-                                                              child: Padding(
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      25.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      15.0,
+                                                                      15.0,
+                                                                      15.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
                                                                 padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         10.0,
                                                                         10.0,
                                                                         10.0),
-                                                                child:
-                                                                    SingleChildScrollView(
-                                                                  scrollDirection:
-                                                                      Axis.horizontal,
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        listViewExtraActsRecord
-                                                                            .actName!,
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .headlineSmall
-                                                                            .override(
-                                                                              fontFamily: 'Poppins',
-                                                                              color: Color(0xFF565656),
+                                                                child: InkWell(
+                                                                  onTap:
+                                                                      () async {
+                                                                    await Navigator
+                                                                        .push(
+                                                                      context,
+                                                                      PageTransition(
+                                                                        type: PageTransitionType
+                                                                            .fade,
+                                                                        child:
+                                                                            FlutterFlowExpandedImageView(
+                                                                          image:
+                                                                              Image.network(
+                                                                            valueOrDefault<String>(
+                                                                              listViewExtraActsRecord.actPic,
+                                                                              'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
                                                                             ),
+                                                                            fit:
+                                                                                BoxFit.contain,
+                                                                          ),
+                                                                          allowRotation:
+                                                                              false,
+                                                                          tag: valueOrDefault<
+                                                                              String>(
+                                                                            listViewExtraActsRecord.actPic,
+                                                                            'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
+                                                                                '$listViewIndex',
+                                                                          ),
+                                                                          useHeroAnimation:
+                                                                              true,
+                                                                        ),
                                                                       ),
-                                                                    ],
+                                                                    );
+                                                                  },
+                                                                  child: Hero(
+                                                                    tag: valueOrDefault<
+                                                                        String>(
+                                                                      listViewExtraActsRecord
+                                                                          .actPic,
+                                                                      'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
+                                                                          '$listViewIndex',
+                                                                    ),
+                                                                    transitionOnUserGestures:
+                                                                        true,
+                                                                    child:
+                                                                        ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5.0),
+                                                                      child: Image
+                                                                          .network(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          listViewExtraActsRecord
+                                                                              .actPic,
+                                                                          'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
+                                                                        ),
+                                                                        width: double
+                                                                            .infinity,
+                                                                        height:
+                                                                            110.0,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        -1.0,
+                                                                        0.0),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
-                                                                          0.0,
                                                                           10.0,
-                                                                          0.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    'الموقع',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Lexend Deca',
-                                                                          color:
-                                                                              Color(0xFF777373),
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
                                                                           10.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      listViewExtraActsRecord
-                                                                          .actLoc!,
-                                                                      textAlign:
-                                                                          TextAlign
+                                                                          10.0),
+                                                                  child:
+                                                                      SingleChildScrollView(
+                                                                    scrollDirection:
+                                                                        Axis.horizontal,
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
                                                                               .start,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Roboto Mono',
-                                                                            color:
-                                                                                Color(0xFF1C8EC1),
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                          ),
+                                                                      children: [
+                                                                        Text(
+                                                                          listViewExtraActsRecord
+                                                                              .actName!,
+                                                                          textAlign:
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineSmall
+                                                                              .override(
+                                                                                fontFamily: 'Poppins',
+                                                                                color: Color(0xFF565656),
+                                                                              ),
+                                                                        ),
+                                                                      ],
                                                                     ),
                                                                   ),
-                                                                  InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      context
-                                                                          .goNamed(
-                                                                        'ManageRequestDetails',
-                                                                        queryParams:
-                                                                            {
-                                                                          'actsdetails':
-                                                                              serializeParam(
-                                                                            listViewExtraActsRecord.actID,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                        }.withoutNulls,
-                                                                        extra: <
-                                                                            String,
-                                                                            dynamic>{
-                                                                          kTransitionInfoKey:
-                                                                              TransitionInfo(
-                                                                            hasTransition:
-                                                                                true,
-                                                                            transitionType:
-                                                                                PageTransitionType.leftToRight,
-                                                                          ),
-                                                                        },
-                                                                      );
-                                                                    },
-                                                                    child: Text(
-                                                                      'للمزيد',
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      'الموقع',
                                                                       textAlign:
                                                                           TextAlign
                                                                               .start,
@@ -1165,25 +1102,102 @@ class _ManageRequestsWidgetState extends State<ManageRequestsWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Poppins',
+                                                                                'Lexend Deca',
                                                                             color:
                                                                                 Color(0xFF777373),
+                                                                            fontSize:
+                                                                                14.0,
                                                                             fontWeight:
                                                                                 FontWeight.normal,
                                                                           ),
                                                                     ),
-                                                                  ),
-                                                                  Icon(
-                                                                    Icons
-                                                                        .chevron_right_rounded,
-                                                                    color: Color(
-                                                                        0xFF777373),
-                                                                    size: 24.0,
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        listViewExtraActsRecord
+                                                                            .actLoc!,
+                                                                        textAlign:
+                                                                            TextAlign.start,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: 'Roboto Mono',
+                                                                              color: Color(0xFF1C8EC1),
+                                                                              fontSize: 16.0,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                    InkWell(
+                                                                      onTap:
+                                                                          () async {
+                                                                        context
+                                                                            .goNamed(
+                                                                          'ManageRequestDetails',
+                                                                          queryParams:
+                                                                              {
+                                                                            'actsdetails':
+                                                                                serializeParam(
+                                                                              listViewExtraActsRecord.actID,
+                                                                              ParamType.String,
+                                                                            ),
+                                                                          }.withoutNulls,
+                                                                          extra: <
+                                                                              String,
+                                                                              dynamic>{
+                                                                            kTransitionInfoKey:
+                                                                                TransitionInfo(
+                                                                              hasTransition: true,
+                                                                              transitionType: PageTransitionType.leftToRight,
+                                                                            ),
+                                                                          },
+                                                                        );
+                                                                      },
+                                                                      child:
+                                                                          Text(
+                                                                        'للمزيد',
+                                                                        textAlign:
+                                                                            TextAlign.start,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: Color(0xFF777373),
+                                                                              fontWeight: FontWeight.normal,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .chevron_right_rounded,
+                                                                      color: Color(
+                                                                          0xFF777373),
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
