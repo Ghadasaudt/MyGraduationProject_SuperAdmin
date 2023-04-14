@@ -295,193 +295,195 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 0.0, 15.0, 15.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x33000000),
-                                        offset: Offset(0.0, 2.0),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(25.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 15.0, 15.0, 15.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  child:
-                                                      FlutterFlowExpandedImageView(
-                                                    image: Image.network(
-                                                      valueOrDefault<String>(
-                                                        listViewExtraActsRecord
-                                                            .actPic,
-                                                        'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
-                                                      ),
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                    allowRotation: false,
-                                                    tag: valueOrDefault<String>(
-                                                      listViewExtraActsRecord
-                                                          .actPic,
-                                                      'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
-                                                          '$listViewIndex',
-                                                    ),
-                                                    useHeroAnimation: true,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            child: Hero(
-                                              tag: valueOrDefault<String>(
-                                                listViewExtraActsRecord.actPic,
-                                                'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
-                                                    '$listViewIndex',
-                                              ),
-                                              transitionOnUserGestures: true,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    listViewExtraActsRecord
-                                                        .actPic,
-                                                    'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
-                                                  ),
-                                                  width: double.infinity,
-                                                  height: 110.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+                                child: InkWell(
+                                  onTap: () async {
+                                    // Navigating to info WITH back navigation
+
+                                    context.pushNamed(
+                                      'course_info',
+                                      queryParams: {
+                                        'courseid': serializeParam(
+                                          listViewExtraActsRecord.actID,
+                                          ParamType.String,
                                         ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
-                                          child: Padding(
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(25.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 15.0, 15.0, 15.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 10.0, 10.0, 10.0),
-                                            child: SingleChildScrollView(
-                                              scrollDirection: Axis.horizontal,
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    listViewExtraActsRecord
-                                                        .actName!,
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color:
-                                                              Color(0xFF565656),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                await Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child:
+                                                        FlutterFlowExpandedImageView(
+                                                      image: Image.network(
+                                                        valueOrDefault<String>(
+                                                          listViewExtraActsRecord
+                                                              .actPic,
+                                                          'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
                                                         ),
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                      allowRotation: false,
+                                                      tag: valueOrDefault<
+                                                          String>(
+                                                        listViewExtraActsRecord
+                                                            .actPic,
+                                                        'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
+                                                            '$listViewIndex',
+                                                      ),
+                                                      useHeroAnimation: true,
+                                                    ),
                                                   ),
-                                                ],
+                                                );
+                                              },
+                                              child: Hero(
+                                                tag: valueOrDefault<String>(
+                                                  listViewExtraActsRecord
+                                                      .actPic,
+                                                  'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png' +
+                                                      '$listViewIndex',
+                                                ),
+                                                transitionOnUserGestures: true,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                  child: Image.network(
+                                                    valueOrDefault<String>(
+                                                      listViewExtraActsRecord
+                                                          .actPic,
+                                                      'https://identity.ksu.edu.sa/themes/custom/gavias_enzio/logo.png',
+                                                    ),
+                                                    width: double.infinity,
+                                                    height: 110.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'الموقع',
-                                                textAlign: TextAlign.start,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color: Color(0xFF777373),
-                                                      fontSize: 14.0,
-                                                      fontWeight:
-                                                          FontWeight.normal,
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 10.0, 10.0, 10.0),
+                                              child: SingleChildScrollView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      listViewExtraActsRecord
+                                                          .actName!,
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Color(
+                                                                    0xFF565656),
+                                                              ),
                                                     ),
+                                                  ],
+                                                ),
                                               ),
-                                            ],
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  listViewExtraActsRecord
-                                                      .actLoc!,
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'الموقع',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .titleSmall
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Roboto Mono',
+                                                            'Lexend Deca',
                                                         color:
-                                                            Color(0xFF1C8EC1),
-                                                        fontSize: 16.0,
+                                                            Color(0xFF777373),
+                                                        fontSize: 14.0,
                                                         fontWeight:
-                                                            FontWeight.w500,
+                                                            FontWeight.normal,
                                                       ),
                                                 ),
-                                              ),
-                                              InkWell(
-                                                onTap: () async {
-                                                  context.goNamed(
-                                                    'course_info',
-                                                    queryParams: {
-                                                      'courseid':
-                                                          serializeParam(
-                                                        listViewExtraActsRecord
-                                                            .actID,
-                                                        ParamType.String,
-                                                      ),
-                                                    }.withoutNulls,
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey:
-                                                          TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .leftToRight,
-                                                      ),
-                                                    },
-                                                  );
-                                                },
-                                                child: Text(
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    listViewExtraActsRecord
+                                                        .actLoc!,
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Roboto Mono',
+                                                          color:
+                                                              Color(0xFF1C8EC1),
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Text(
                                                   'للمزيد',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
@@ -495,16 +497,16 @@ class _CoursesWidgetState extends State<CoursesWidget> {
                                                             FontWeight.normal,
                                                       ),
                                                 ),
-                                              ),
-                                              Icon(
-                                                Icons.chevron_right_rounded,
-                                                color: Color(0xFF777373),
-                                                size: 24.0,
-                                              ),
-                                            ],
+                                                Icon(
+                                                  Icons.chevron_right_rounded,
+                                                  color: Color(0xFF777373),
+                                                  size: 24.0,
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

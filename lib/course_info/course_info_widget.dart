@@ -60,15 +60,7 @@ class _CourseInfoWidgetState extends State<CourseInfoWidget> {
             size: 30.0,
           ),
           onPressed: () async {
-            context.goNamed(
-              'courses',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
-                ),
-              },
-            );
+            context.safePop();
           },
         ),
         title: Text(

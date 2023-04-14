@@ -38,3 +38,11 @@ bool showSearchResultOp(
 ) {
   return textSearchIn4.toLowerCase().contains(textSearchFor4.toLowerCase());
 }
+
+int allpending(
+  int allacts,
+  int allopps,
+) {
+  // get the sun of given numbers and return a zero if they are empty
+  return allacts + allopps;
+}
