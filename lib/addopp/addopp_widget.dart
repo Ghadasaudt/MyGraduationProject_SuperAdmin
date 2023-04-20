@@ -1158,12 +1158,60 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                 return;
                               }
                               if (_model.datePicked1 == null) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title:
+                                          Text('يجب تحديد تاريخ بداية الفرصة'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('تم'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                                 return;
                               }
                               if (_model.datePicked2 == null) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title:
+                                          Text('يجب تحديد تاريخ نهاية الفرصة'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('تم'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                                 return;
                               }
                               if (_model.datePicked3 == null) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          'يجب تحديد تاريخ نهاية فترة التقديم'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('تم'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                                 return;
                               }
 

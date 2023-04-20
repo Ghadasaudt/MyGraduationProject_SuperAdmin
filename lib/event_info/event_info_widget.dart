@@ -60,15 +60,7 @@ class _EventInfoWidgetState extends State<EventInfoWidget> {
             size: 30.0,
           ),
           onPressed: () async {
-            context.goNamed(
-              'events',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
-                ),
-              },
-            );
+            context.safePop();
           },
         ),
         title: Text(

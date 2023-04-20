@@ -60,15 +60,7 @@ class _WorkshopeInfoWidgetState extends State<WorkshopeInfoWidget> {
             size: 30.0,
           ),
           onPressed: () async {
-            context.goNamed(
-              'workshops',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
-                ),
-              },
-            );
+            context.safePop();
           },
         ),
         title: Text(
