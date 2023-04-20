@@ -1302,7 +1302,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'تم ارسال الطلب بنجاح',
+                                        'تم إضافة النشاط بنجاح',
                                         style: TextStyle(
                                           color: Color(0xE1FFFFFF),
                                           fontWeight: FontWeight.bold,

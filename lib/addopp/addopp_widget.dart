@@ -1254,7 +1254,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'تم إضافة النشاط بنجاح',
+                                    'تم إضافة الفرصة بنجاح',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
