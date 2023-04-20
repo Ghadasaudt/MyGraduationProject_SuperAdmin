@@ -88,7 +88,7 @@ class _UnauthpageWidgetState extends State<UnauthpageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 100.0, 0.0, 0.0),
                                   child: Text(
-                                    'عذراً غير مصرح لك باستخدام هذا النظام',
+                                    'عذراً غير مصرح لك بإستخدام هذا النظام',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(

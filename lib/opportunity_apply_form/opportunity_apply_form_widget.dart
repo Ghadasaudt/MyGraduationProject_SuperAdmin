@@ -66,7 +66,7 @@ class _OpportunityApplyFormWidgetState
               size: 30.0,
             ),
             onPressed: () async {
-              context.goNamed('Opportunities');
+              context.safePop();
             },
           ),
           title: Text(
