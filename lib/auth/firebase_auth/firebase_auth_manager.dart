@@ -209,7 +209,7 @@ class FirebaseAuthManager extends AuthManager
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
-            'يوجد حساب بهذا البريد الإلكتروني حاولي تسجيل الدخول',
+            'يوجد حساب بهذا البريد الإلكتروني حاول تسجيل الدخول',
             style: TextStyle(
               color: Color.fromARGB(223, 255, 255, 255),
               fontWeight: FontWeight.bold,
@@ -222,7 +222,7 @@ class FirebaseAuthManager extends AuthManager
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
-            'لا يوجد حساب بهذا البريد الإلكتروني حاولي إنشاء حساب',
+            'لا يوجد حساب بهذا البريد الإلكتروني حاول إنشاء حساب',
             style: TextStyle(
               color: Color.fromARGB(223, 255, 255, 255),
               fontWeight: FontWeight.bold,

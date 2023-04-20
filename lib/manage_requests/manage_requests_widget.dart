@@ -101,7 +101,7 @@ class _ManageRequestsWidgetState extends State<ManageRequestsWidget> {
                               text: 'طالبات إضافة الفرص',
                             ),
                             Tab(
-                              text: 'طالبات إضافة الانشطة',
+                              text: 'طالبات إضافة الأنشطة',
                             ),
                           ],
                         ),

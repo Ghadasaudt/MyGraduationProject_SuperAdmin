@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'my_opp_details_model.dart';
 export 'my_opp_details_model.dart';
 import 'dart:ui' as ui;
+import 'dart:ui' as ui;
 
 class MyOppDetailsWidget extends StatefulWidget {
   const MyOppDetailsWidget({
@@ -570,6 +571,7 @@ class _MyOppDetailsWidgetState extends State<MyOppDetailsWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                   child: Text(
                                                                                     listViewOppApplicationsRecord.appEmail!,
+                                                                                    textDirection: ui.TextDirection.ltr,
                                                                                     textAlign: TextAlign.justify,
                                                                                     style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                           fontFamily: 'Outfit',
@@ -577,7 +579,6 @@ class _MyOppDetailsWidgetState extends State<MyOppDetailsWidget> {
                                                                                           fontSize: 20.0,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
-                                                                                    textDirection: ui.TextDirection.ltr,
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
@@ -863,6 +864,7 @@ class _MyOppDetailsWidgetState extends State<MyOppDetailsWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                   child: Text(
                                                                                     listViewOppApplicationsRecord.appEmail!,
+                                                                                    textDirection: ui.TextDirection.ltr,
                                                                                     textAlign: TextAlign.justify,
                                                                                     style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                           fontFamily: 'Outfit',
