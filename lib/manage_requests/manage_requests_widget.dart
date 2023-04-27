@@ -98,10 +98,10 @@ class _ManageRequestsWidgetState extends State<ManageRequestsWidget> {
                           indicatorColor: Color(0xDFE1D7C6),
                           tabs: [
                             Tab(
-                              text: 'طالبات إضافة الفرص',
+                              text: 'طلبات إضافة الفرص',
                             ),
                             Tab(
-                              text: 'طالبات إضافة الأنشطة',
+                              text: 'طلبات إضافة الأنشطة',
                             ),
                           ],
                         ),
