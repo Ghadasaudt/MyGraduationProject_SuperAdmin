@@ -1258,6 +1258,13 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                     return;
                                   }
 
+                                  String Generate_ID = random_data.randomString(
+                                    20,
+                                    20,
+                                    true,
+                                    true,
+                                    true,
+                                  );
                                   final extraActsCreateData = {
                                     ...createExtraActsRecordData(
                                       actType: _model.actTypeValue,
@@ -1272,13 +1279,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                       numSeats: int.tryParse(
                                           _model.textController4.text),
                                       actProvider: currentUserDisplayName,
-                                      actID: random_data.randomString(
-                                        20,
-                                        20,
-                                        true,
-                                        true,
-                                        true,
-                                      ),
+                                      actID: Generate_ID,
                                       actProviderEmail: currentUserEmail,
                                       lastD2enroll: _model.datePicked3,
                                       lastD2disenroll: _model.datePicked4,
@@ -1286,7 +1287,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
                                     'Act_category': FFAppState().ActCategory,
                                   };
                                   await ExtraActsRecord.collection
-                                      .doc()
+                                      .doc(Generate_ID)
                                       .set(extraActsCreateData);
                                   triggerPushNotification(
                                     notificationTitle: 'تمت إضافة نشاط ',
