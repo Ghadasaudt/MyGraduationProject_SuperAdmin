@@ -216,7 +216,17 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                                                   SnackBar(
                                                     content: Text(
                                                       'يجب إدخال البريد الإلكتروني',
+                                                      style: TextStyle(
+                                                        color:
+                                                            Color(0xE1FFFFFF),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
                                                     ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        Color(0xE1FF2323),
                                                   ),
                                                 );
                                                 return;
