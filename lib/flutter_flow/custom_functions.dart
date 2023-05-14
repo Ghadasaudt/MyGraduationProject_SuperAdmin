@@ -46,3 +46,18 @@ int allpending(
   // get the sun of given numbers and return a zero if they are empty
   return allacts + allopps;
 }
+
+double rateDisplay(
+  int num1,
+  int num2,
+  int num3,
+  int num4,
+  int num5,
+  int count,
+) {
+  // 5 star survey
+  // get the sun of given numbers and return a zero if they are empty
+
+  return ((num1 + num2 * 2 + num3 * 3 + num4 * 4 + num5 * 5) / count)
+      .roundToDouble();
+}

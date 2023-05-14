@@ -7,6 +7,7 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(ActRatingsRecord.serializer)
       ..add(CategoryRecord.serializer)
       ..add(ExtraActsRecord.serializer)
       ..add(NotifyRecord.serializer)
