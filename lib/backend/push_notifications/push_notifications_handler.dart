@@ -160,6 +160,13 @@ final parametersBuilderMap =
           'actsdetails': getParameter<String>(data, 'actsdetails'),
         },
       ),
+  'profile': ParameterData.none(),
+  'ManageRequestDetailsCopy': (data) async => ParameterData(
+        allParams: {
+          'actsdetails': getParameter<String>(data, 'actsdetails'),
+        },
+      ),
+  'passwordreset': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

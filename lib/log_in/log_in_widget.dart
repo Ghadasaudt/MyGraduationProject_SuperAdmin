@@ -198,7 +198,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                               ),
                                               style: GoogleFonts.getFont(
                                                 'Open Sans',
-                                                color: Color(0xFF565656),
+                                                color: Color(0xFF7EAEBD),
                                                 fontWeight: FontWeight.normal,
                                               ),
                                               textDirection:
@@ -300,7 +300,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                               ),
                                               style: GoogleFonts.getFont(
                                                 'Open Sans',
-                                                color: Color(0xFF565656),
+                                                color: Color(0xFF7EAEBD),
                                                 fontWeight: FontWeight.normal,
                                               ),
                                               textDirection:
@@ -390,24 +390,12 @@ class _LogInWidgetState extends State<LogInWidget> {
                                           ),
                                         ),
                                         InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            if (_model
-                                                .emailController.text.isEmpty) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'يجب إدخال البريد الإلكتروني',
-                                                  ),
-                                                ),
-                                              );
-                                              return;
-                                            }
-                                            await authManager.resetPassword(
-                                              email:
-                                                  _model.emailController.text,
-                                              context: context,
-                                            );
+                                            context.pushNamed('passwordreset');
                                           },
                                           child: Text(
                                             'استرجاع كلمة المرور؟',
@@ -417,7 +405,7 @@ class _LogInWidgetState extends State<LogInWidget> {
                                               fontWeight: FontWeight.normal,
                                             ),
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
                                   ),

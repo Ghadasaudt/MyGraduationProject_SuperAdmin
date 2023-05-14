@@ -235,58 +235,6 @@ class _MyActivitesWidgetState extends State<MyActivitesWidget> {
                                                                             ),
                                                                       ),
                                                                     ),
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        SelectionArea(
-                                                                            child:
-                                                                                Text(
-                                                                          'حالة التقديم',
-                                                                          textAlign:
-                                                                              TextAlign.start,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .titleMedium
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: Color(0xFF777373),
-                                                                                fontSize: 14.0,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
-                                                                        )),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              20.0,
-                                                                              0.0,
-                                                                              5.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Icon(
-                                                                            Icons.flaky,
-                                                                            color:
-                                                                                Color(0xFF777373),
-                                                                            size:
-                                                                                24.0,
-                                                                          ),
-                                                                        ),
-                                                                        SelectionArea(
-                                                                            child:
-                                                                                Text(
-                                                                          listViewOpportunitiesRecord
-                                                                              .status!,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Poppins',
-                                                                                color: Color(0xFF7EAEBD),
-                                                                              ),
-                                                                        )),
-                                                                      ],
-                                                                    ),
                                                                   ],
                                                                 ),
                                                               ),

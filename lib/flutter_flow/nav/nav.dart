@@ -222,6 +222,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ManageRequestDetailsCopyWidget(
                 actsdetails: params.getParam('actsdetails', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'passwordreset',
+              path: 'passwordreset',
+              builder: (context, params) => PasswordresetWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
