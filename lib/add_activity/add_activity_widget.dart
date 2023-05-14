@@ -120,7 +120,7 @@ class _AddActivityWidgetState extends State<AddActivityWidget> {
               width: double.infinity,
               child: Form(
                 key: _model.formKey,
-                autovalidateMode: AutovalidateMode.disabled,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,

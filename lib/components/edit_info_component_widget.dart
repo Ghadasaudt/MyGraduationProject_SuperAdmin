@@ -116,7 +116,7 @@ class _EditInfoComponentWidgetState extends State<EditInfoComponentWidget> {
             ),
             Form(
               key: _model.formKey,
-              autovalidateMode: AutovalidateMode.disabled,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: StreamBuilder<List<CategoryRecord>>(
                 stream: queryCategoryRecord(
                   singleRecord: true,
