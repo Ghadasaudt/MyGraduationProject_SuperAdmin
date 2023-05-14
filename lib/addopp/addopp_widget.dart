@@ -674,7 +674,7 @@ class _AddoppWidgetState extends State<AddoppWidget> {
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'لا يمكنك طلب أكثر من ٥ مهارات',
+                                                      'لا يمكنك طلب أكثر من ٥ وظائف',
                                                       style: TextStyle(
                                                         color:
                                                             Color(0xE1FFFFFF),
